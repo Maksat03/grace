@@ -1,0 +1,34 @@
+<div class="main_content">
+    <div class="block navbar-block">
+        <div class="container navbar-container">
+            <a href="/">
+                <img class="logo-img" src="/static/imgs/logo.png" alt="">
+            </a>
+
+            <div class="hamburger-menu" onclick="open_burger()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <div action="/search/" class="burger">
+                <div class="burger-container">
+                    <h2><a href="/">Басты бет</a></h2>
+                    <h2><a href="/wishlist/">Таңдаулы</a></h2>
+                    <h2><a href="/cart/">Себет</a></h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="margin: 0 auto">
+            <hr>
+        </div>
+    </div>
+
+    {% block body %}
+    {% endblock %}
+</div>
+
+<div class="block footer-block">
+    <div class="container footer-container"></div>
+</div>

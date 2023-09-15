@@ -1,0 +1,29 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="user.models.Client.objects" />
+          <option value="django.contrib.auth.models.User.client" />
+          <option value="site_settings.models.Contact.objects" />
+          <option value="user.models.FavouriteProduct.objects" />
+          <option value="django.contrib.auth.models.User.favourites" />
+          <option value="booking.models.BookingRequest.objects" />
+          <option value="resident.models.Resident.objects" />
+          <option value="booking.models.BookedPlace.objects" />
+          <option value="typing.Mapping.aggregate" />
+          <option value="dict.get" />
+          <option value="product.models.Product.objects" />
+          <option value="request.models.Request.objects" />
+          <option value="product.models.Product.options" />
+          <option value="product.models.ProductOption.objects" />
+          <option value="django.db.models.fields.CharField.lower" />
+          <option value="rest_framework.serializers.Serizalizer" />
+          <option value="base_object_presenter.models.BaseModelPresenter.objects" />
+          <option value="django.db.models.base.Model.objects" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
