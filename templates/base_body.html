@@ -1,9 +1,21 @@
+{% load static %}
+
+
 <div class="main_content">
     <div class="block navbar-block">
         <div class="container navbar-container">
             <a href="/">
-                <img class="logo-img" src="/static/imgs/logo.png" alt="">
+                <img class="logo-img" src="{% static 'imgs/logo.png' %}" alt="">
             </a>
+
+            <div class="navigation">
+                <a href="/services/">Услуги</a>
+                <a href="/portfolio/">Портфолио</a>
+                <a href="/store/">Магазин</a>
+                <a href="/about_us/">О нас</a>
+            </div>
+
+            <button class="leave_request_btn">Оставить заявку</button>
 
             <div class="hamburger-menu" onclick="open_burger()">
                 <div class="bar"></div>
@@ -19,10 +31,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="container" style="margin: 0 auto">
-            <hr>
-        </div>
     </div>
 
     {% block body %}
@@ -30,5 +38,22 @@
 </div>
 
 <div class="block footer-block">
-    <div class="container footer-container"></div>
+    <div class="container footer-container">
+        <img src="/static/imgs/logo-img.png" alt="">
+
+        <div class="contacts">
+            <h2>Контакты</h2>
+            <p>kantaimaksat03@gmail.com</p>
+            <p>+77779185334</p>
+        </div>
+
+        <div class="navigation">
+            <h2>Компания</h2>
+            <p><a href="/">Главная</a></p>
+            <p><a href="/services/">Услуги</a></p>
+            <p><a href="/portfolio/">Портфолио</a></p>
+            <p><a href="/store/">Магазин</a></p>
+            <p><a href="/about_us/">О нас</a></p>
+        </div>
+    </div>
 </div>

@@ -67,7 +67,7 @@ INSTALLED_APPS = [
     # 'user',
 
     # 'base_object_presenter',
-    'debug_toolbar',
+    # 'debug_toolbar',
     'rest_framework'
 ]
 
@@ -81,7 +81,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 
     'pages.cache_control_middleware.CacheControlMiddleware'
 ]

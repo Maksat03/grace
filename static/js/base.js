@@ -22,6 +22,10 @@ function appear_page() {
     document.getElementsByClassName("body")[0].classList.add('fade-in');
 }
 
+function page_loaded_js_function() {
+    document.getElementById("page_loaded_js_function").click()
+}
+
 
 function load_page(url) {
     axios(url, {
@@ -34,6 +38,7 @@ function load_page(url) {
         set_anchors_click_event_listener()
         set_page_title()
         appear_page()
+        page_loaded_js_function()
     }).catch(error => console.error('Ошибка загрузки страницы:', error));
 }
 
@@ -98,3 +103,17 @@ function close_burger() {
 
 
 load_page(window.location.search)
+
+
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-viewport');
+    }
+  });
+});
+
+
+
+
