@@ -27,7 +27,7 @@ else:
     TIME_DIFFERENCE_BETWEEN_SERVER = 6
 
 
-ALLOWED_HOSTS = [DOMAIN, SERVER, "localhost"]
+ALLOWED_HOSTS = [DOMAIN, SERVER, "localhost", "192.168.117.119"]
 WSGI_APPLICATION = 'project.wsgi.application'
 ROOT_URLCONF = 'project.urls'
 
@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'pages',
-    # 'portfolio',
+    # 'services',
     # 'product',
     # 'request',
     # 'settings',  # + contacts(+ social networks) + tg_ids

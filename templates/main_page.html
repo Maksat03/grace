@@ -10,7 +10,7 @@
     <div class="container main_page_info">
         <div class="info">
             <h1>Изготовливаем материалы для вашей рекламы.</h1>
-            <p>Мы изготавливаем объёмные буквы, стенды, световые коробы и многое другое с гарантией качества и сроков.</p>
+            <p class="sub-header">Мы изготавливаем объёмные буквы, стенды, световые коробы и многое другое с гарантией качества и сроков.</p>
             <div class="statistics">
                 <div>
                     <h2>3+ года</h2>
@@ -45,43 +45,7 @@
     <div class="block">
         <div class="container services_info">
             <h1>Наши услуги</h1>
-            <div class="services_list">
-                <div class="service_card">
-                    <div class="service_img" style="background-image: url(/static/imgs/service_img.png);"></div>
-                    <div class="text">
-                        <h3>Вывески</h3>
-                        <p>32 вида</p>
-                    </div>
-                </div>
-                <div class="service_card">
-                    <div class="service_img" style="background-image: url(/static/imgs/service_img2.png);"></div>
-                    <div class="text">
-                        <h3>Service Name</h3>
-                        <p>32 types</p>
-                    </div>
-                </div>
-                <div class="service_card">
-                    <div class="service_img" style="background-image: url(/static/imgs/service_img3.png);"></div>
-                    <div class="text">
-                        <h3>Service Name</h3>
-                        <p>32 types</p>
-                    </div>
-                </div>
-                <div class="service_card">
-                    <div class="service_img" style="background-image: url(/static/imgs/service_img4.png);"></div>
-                    <div class="text">
-                        <h3>Service Name</h3>
-                        <p>32 types</p>
-                    </div>
-                </div>
-                <div class="service_card">
-                    <div class="service_img" style="background-image: url(/static/imgs/service_img5.png);"></div>
-                    <div class="text">
-                        <h3>Service Name</h3>
-                        <p>32 types</p>
-                    </div>
-                </div>
-            </div>
+            {% include 'services.html' %}
         </div>
     </div>
 
@@ -94,46 +58,66 @@
                 <div class="product_card">
                     <div class="product_img" style="background-image: url(/static/imgs/product_img.png);"></div>
                     <div class="text">
-                        <h4>Принтер Epson L1800...</h4>
-                        <p>Код товара: 777777</p>
-                        <h3>440.000 tg</h3>
-                        <button><span>купить</span></button>
+                        <div class="pre_product_name_block">
+                            <h4>Принтер Epson L1800...</h4>
+                        </div>
+                        <div class="after_product_name_block">
+                            <p>Код товара: 777777</p>
+                            <h3>440.000 tg</h3>
+                            <button><span>купить</span></button>
+                        </div>
                     </div>
                 </div>
                 <div class="product_card">
                     <div class="product_img" style="background-image: url(/static/imgs/product_img2.png);"></div>
                     <div class="text">
-                        <h4>Product Name</h4>
-                        <p>32 types</p>
-                        <h3>440.000 tg</h3>
-                        <button><span>купить</span></button>
+                        <div class="pre_product_name_block">
+                            <h4>Product Name</h4>
+                        </div>
+                        <div class="after_product_name_block">
+                            <p>32 types</p>
+                            <h3>440.000 tg</h3>
+                            <button><span>купить</span></button>
+                        </div>
                     </div>
                 </div>
                 <div class="product_card">
                     <div class="product_img" style="background-image: url(/static/imgs/product_img3.png);"></div>
                     <div class="text">
-                        <h4>Product Name</h4>
-                        <p>32 types</p>
-                        <h3>440.000 tg</h3>
-                        <button><span>купить</span></button>
+                        <div class="pre_product_name_block">
+                            <h4>Product Name</h4>
+                        </div>
+                        <div class="after_product_name_block">
+                            <p>32 types</p>
+                            <h3>440.000 tg</h3>
+                            <button><span>купить</span></button>
+                        </div>
                     </div>
                 </div>
                 <div class="product_card">
                     <div class="product_img" style="background-image: url(/static/imgs/product_img4.png);"></div>
                     <div class="text">
-                        <h4>Product Name</h4>
-                        <p>32 types</p>
-                        <h3>440.000 tg</h3>
-                        <button><span>купить</span></button>
+                        <div class="pre_product_name_block">
+                            <h4>Product Name</h4>
+                        </div>
+                        <div class="after_product_name_block">
+                            <p>32 types</p>
+                            <h3>440.000 tg</h3>
+                            <button><span>купить</span></button>
+                        </div>
                     </div>
                 </div>
                 <div class="product_card">
                     <div class="product_img" style="background-image: url(/static/imgs/product_img5.png);"></div>
                     <div class="text">
-                        <h4>Product Name</h4>
-                        <p>32 types</p>
-                        <h3>440.000 tg</h3>
-                        <button><span>купить</span></button>
+                        <div class="pre_product_name_block">
+                            <h4>Product Name</h4>
+                        </div>
+                        <div class="after_product_name_block">
+                            <p>32 types</p>
+                            <h3>440.000 tg</h3>
+                            <button><span>купить</span></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -177,6 +161,8 @@
 
                 <button type="submit"><span>Оставить заявку</span></button>
             </form>
+
+            <img class="leave_request_background" src="/static/imgs/leave_request_background.png" alt="">
         </div>
     </div>
 </div>

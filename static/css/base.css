@@ -48,6 +48,7 @@ body {
 
 .block {
 	width: 100%;
+	overflow: hidden;
 }
 
 .container {
@@ -68,6 +69,7 @@ body {
 
 .navbar-block {
     box-shadow: 0px -1px 3px 0px gray;
+    overflow: initial;
 }
 
 .navbar-container {
@@ -87,7 +89,7 @@ body {
 	margin-left: auto;
 	z-index: 5000;
 	cursor: pointer;
-	display: none
+	display: none;
 }
 
 .bar {
@@ -115,17 +117,19 @@ body {
 }
 
 .burger {
-    position: absolute;
+    position: fixed;
+    z-index: 4000;
+
     top: -40px;
     right: -45px;
 
-    width: 30em;
-    height: 100vh;
+    width: 70%;
+    height: calc(100vh - 40px);
 
     padding-top: 80px;
-    padding-left: 57px;
+    padding-left: 45px;
 
-    background: #1d3a8a;
+    background: #4ebda3;
     color: white;
 
     transform: translateY(-100%);
@@ -136,7 +140,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    z-index: 4000;
 
     transform: translateY(0);
     transition: transform 0.8s 0s;
@@ -246,4 +249,10 @@ body {
 .footer-container a {
     text-decoration: none;
     color: white;
+}
+
+.burger-container .leave_request_btn {
+    background-color: #000000c2;
+    color: white;
+    font-size: 20px;
 }

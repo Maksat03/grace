@@ -21,10 +21,11 @@
     margin: 30px 0 0 0;
 }
 
-.main_page_info .info p {
+.main_page_info .info .sub-header {
     margin-top: 20px;
     margin-bottom: 25px;
     line-height: 20px;
+    font-size: 20px;
 }
 
 .main_page_info .info .statistics {
@@ -52,6 +53,13 @@
   to {
     opacity: 1; /* Fade in the element */
     transform: translateY(0); /* Slide up the element */
+  }
+}
+
+@keyframes appearx {
+  to {
+    opacity: 1; /* Fade in the element */
+    transform: translateX(0); /* Slide up the element */
   }
 }
 
@@ -86,10 +94,10 @@
 
 .main_page_info .banner {
     background-image: url(/static/imgs/banner.png);
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
     background-size: contain;
-    width: 580px;
+    width: 100%;
     position: relative;
 }
 
@@ -100,7 +108,7 @@
     background: white;
 
     width: 250px;
-    height: 100px;
+    height: 110px;
 
     position: absolute;
     bottom: 20px;
@@ -108,12 +116,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 7px;
+}
+
+.main_page_info .banner .choices_us img {
+    margin-top: 10px;
 }
 
 .main_page_info .banner .choices_us {
-    margin-top: auto;
-
     opacity: 0;
     transform: translateY(20%);
     animation: appear 0.5s forwards;
@@ -156,6 +166,7 @@
 .services_info .services_list .service_card:nth-last-child(2), .services_info .services_list .service_card:last-child {
     width: 530px;
     margin-right: auto;
+    margin-bottom: 10px;
 }
 
 .services_info .services_list .service_card:last-child {
@@ -165,7 +176,7 @@
 .services_info .services_list .service_card .service_img {
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: top;
     height: 280px;
     width: 100%;
     border-top-left-radius: 20px;
@@ -217,10 +228,11 @@
 .products_info .products_list {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 .products_info .products_list .product_card {
-    height: 325px;
+    height: 350px;
     width: 200px;
 
     border: none;
@@ -330,9 +342,9 @@
  
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: top;
+    background-position: center;
     opacity: 0;
-    transform: translateY(300%);
+    transform: translateY(100%);
 }
 
 .partners_info .partners_list .partner_card.in-viewport {
@@ -358,6 +370,11 @@
     margin-top: 20px;
 }
 
+.main_page_leave_request_container form .inputs {
+    display: flex;
+    gap: 15px;
+}
+
 .main_page_leave_request_container form h1 {
     margin: 0;
 }
@@ -372,7 +389,6 @@
     height: 20px;
     border: 1px solid #afafaf;
     border-radius: 5px;
-    margin-right: 10px;
     padding: 5px 10px;
 }
 
@@ -395,4 +411,25 @@
     width: 350px;
     height: 220px;
     margin-left: 50px;
+}
+
+.main_page_leave_request_container .leave_request_background {
+    display: none;
+}
+
+
+.products_info .products_list .product_card .text .pre_product_name_block {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    min-height: 35px;
+}
+
+.products_info .products_list .product_card .text .pre_product_name_block {
+    margin-top: auto;
+}
+
+.products_info .products_list .product_card .text .pre_product_name_block h4 {
+    min-height: 42px;
 }

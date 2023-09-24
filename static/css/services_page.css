@@ -1,0 +1,42 @@
+.services_info .about_service {
+    display: flex;
+}
+
+.services_info hr {
+    margin: 40px auto 40px 0;
+    width: 40%;
+    border: none;
+    height: 1.5px;
+    color: #53C0A9;
+    background-color: #53C0A9;
+}
+
+.services_info .about_service .text {
+    width: calc(100% - 300px);
+}
+
+.services_info .about_service .text h1 {
+    margin: 0;
+}
+
+.services_info .about_service .text .prev_service_link {
+    margin-top: 3px;
+}
+
+.services_info .about_service .text .prev_service_link a {
+    color: gray;
+    text-decoration: underline;
+}
+
+.services_info .about_service .service_img {
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+
+    margin-left: auto;
+    border-radius: 20px;
+
+    width: 270px;
+    height: 200px;
+
+}

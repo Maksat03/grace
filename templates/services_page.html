@@ -1,0 +1,35 @@
+{% extends 'base_body.html' %}
+
+{% block body %}
+
+<span style="display: none" id="page_title">Услуги</span>
+<button style="display: none" onclick="services_page_loaded()" id="page_loaded_js_function"></button>
+
+
+<div class="block">
+    <div class="container services_info">
+        <div class="about_service">
+            <div class="text">
+                <h1>Service Name</h1>
+                <p class="prev_service_link"><a href="/services/">Назад на service name</a></p>
+                <p>Service Description Text Service Description Text Service Description Text
+                Service Description Text Service Description Text Service Description Text Service Description Text
+                Service Description Text Service Description Text Service Description Text Service Description Text
+                Service Description Text Service Description Text Service Description Text Service Description Text
+                Service Description Text </p>
+            </div>
+            <div class="service_img" style="background-image: url(/static/imgs/service_image.png)"></div>
+        </div>
+
+        <hr>
+
+        <div>
+            <h2>Виды</h2>
+
+            {% include 'services.html' %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

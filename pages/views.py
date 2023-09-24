@@ -8,5 +8,5 @@ def main_page_view(request):
 
 
 @base_page_or_content
-def portfolio_page_view(request):
-    return render(request, "portfolio_page.html")
+def services_page_view(request):
+    return render(request, "services_page.html")

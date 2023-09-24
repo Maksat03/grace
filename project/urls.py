@@ -27,7 +27,7 @@ urlpatterns = [
     # path('login/', LoginView.as_view()),
     # path("logout/", LogoutView.as_view()),
 
-    # path('api/portfolio/', include("portfolio.urls")),
+    # path('api/services/', include("services.urls")),
     # path('api/product/', include("product.urls")),
     # path('api/request/', include("request.urls")),
     # path('api/settings/', include("settings.urls")),

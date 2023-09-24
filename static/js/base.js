@@ -39,6 +39,7 @@ function load_page(url) {
         set_page_title()
         appear_page()
         page_loaded_js_function()
+        document.body.style.overflow = 'auto';
     }).catch(error => console.error('Ошибка загрузки страницы:', error));
 }
 
@@ -115,5 +116,10 @@ const observer = new IntersectionObserver(entries => {
 });
 
 
+window.addEventListener("popstate", function(event) {
+  if (event.type === "popstate") {
+    load_page(window.location.search)
+  }
+})
 
 

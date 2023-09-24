@@ -1,0 +1,27 @@
+@media(max-width: 900px) {
+    .services_info .about_service {
+        flex-direction: column;
+    }
+
+    .services_info .about_service .text {
+        width: 100%;
+    }
+
+    .services_info .about_service .service_img {
+        background-position: center;
+        width: 100%;
+        height: 350px;
+    }
+}
+
+@media(max-width: 630px) {
+    .services_info .about_service .service_img {
+        height: 300px;
+    }
+}
+
+@media(max-width: 500px) {
+    .services_info .about_service .service_img {
+        height: 250px;
+    }
+}

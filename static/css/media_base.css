@@ -1,0 +1,67 @@
+@media(max-width: 1150px) {
+	.container {
+		width: 850px;
+	}
+
+	.footer-container {
+        gap: 115px;
+	}
+}
+
+@media(max-width: 900px) {
+	.container {
+		width: 600px;
+	}
+
+	.navbar-container .navigation, .navbar-container .leave_request_btn {
+		display: none;
+	}
+
+	.footer-container {
+		gap: 30px;
+	}
+
+	.footer-container .contacts {
+		width: 70%;
+	}
+
+	.footer-container * {
+		margin-bottom: 10px;
+	}
+
+	.footer-container .navigation {
+	    margin-bottom: 70px;
+	}
+
+	.footer-block {
+		height: fit-content;
+	}
+
+	.hamburger-menu {
+		display: block;
+        height: 30px;
+        margin: auto 0 auto auto;
+	}
+}
+
+@media(max-width: 630px) {
+    .container {
+        width: 480px;
+    }
+}
+
+
+@media(max-width: 500px) {
+	.container {
+		width: 350px;
+	}
+
+	.footer-container {
+	    gap: 15px;
+	}
+
+	.footer-container .cities p {
+	    margin-bottom: 15px;
+	}
+}
+

@@ -1,0 +1,429 @@
+@media(max-width: 1150px) {
+	.main_page_info .info h1 {
+		font-size: 37px;
+		line-height: 35px;
+		letter-spacing: 1px;
+		width: 350px;
+	}
+
+	.main_page_info .info .sub-header {
+	    font-size: 18px;
+	}
+
+    .main_page_info {
+        gap: 35px;
+    }
+
+	.main_page_info .info {
+	    width: 380px;
+	}
+
+	.main_page_info .info .statistics div {
+        width: 45%;
+        height: 100px;
+    }
+
+    .main_page_info .info .statistics div h2 {
+        font-size: 27px;
+    }
+
+    .main_page_info .info .statistics div p {
+        font-size: 18px;
+    }
+
+    .main_page_info .banner .choices_us {
+        bottom: 95px;
+        width: 230px;
+        height: 100px;
+        gap: 5px;
+    }
+
+    .services_info .services_list .service_card {
+        height: 320px;
+        width: 266.6px;
+    }
+
+    .services_info .services_list .service_card .service_img {
+        height: 245px;
+    }
+
+    .services_info .services_list .service_card .text {
+        padding: 12px 20px 15px 20px;
+    }
+
+    .services_info .services_list .service_card:nth-last-child(2), .services_info .services_list .service_card:last-child {
+        width: 410px;
+    }
+
+    .products_info p {
+        font-size: 19px;
+    }
+
+    .products_info .products_list .product_card {
+        height: 295px;
+        width: 150px;
+    }
+
+    .products_info .products_list .product_card .product_img {
+        height: 150px;
+        width: 150px;
+    }
+
+    .products_info .products_list .product_card .text {
+        padding: 8px 5px 0px 5px;
+    }
+
+    .partners_info .partners_list {
+        gap: 50px;
+        row-gap: 30px;
+    }
+
+    .partners_info .partners_list .partner_card {
+        height: 70px;
+        width: 175px;
+    }
+
+    .main_page_leave_request_container .grace_logo_with_pen {
+        width: 270px;
+    }
+
+    .main_page_leave_request_container form input {
+        width: 200px;
+    }
+
+    .main_page_leave_request_container form button {
+        width: 221px;
+    }
+
+    .main_page_leave_request_container {
+        padding: 10px 0px;
+    }
+}
+
+@media(max-width: 900px) {
+    .main_page_info .banner .choices_us {
+        display: none;
+    }
+
+    .main_page_info .banner {
+        position: absolute;
+        height: 240px;
+        left: 40%;
+
+        opacity: 0;
+        transform: translateX(20%);
+        animation: appearx 0.5s forwards;
+        animation-delay: 0.55s;
+    }
+
+    .main_page_info .info .statistics div:nth-child(1) {
+      animation-delay: 0.9s; /* Delay for the first element */
+    }
+
+    .main_page_info .info .statistics div:nth-child(2) {
+      animation-delay: 1.2s; /* Delay for the second element */
+    }
+
+    .main_page_info .info .statistics div:nth-child(3) {
+      animation-delay: 1.4s; /* Delay for the third element */
+    }
+
+    .main_page_info .info .statistics div:nth-child(4) {
+      animation-delay: 1.8s; /* Delay for the fourth element */
+    }
+
+    .after_main_page_info {
+        opacity: 0;
+        transform: translateY(20%);
+        animation: appear 0.5s forwards;
+        animation-delay: 2s;
+    }
+
+    .main_page_info .info {
+        z-index: 1;
+        width: 100%;
+    }
+
+    .main_page_info .info .statistics {
+        width: 100%;
+    }
+
+    .main_page_info .info .sub-header {
+        width: 360px;
+    }
+
+    .main_page_info .info .statistics div {
+        width: 48.7%;
+    }
+
+    .services_info .services_list .service_card {
+        height: 230px;
+        width: 183.3px;
+    }
+
+    .services_info .services_list .service_card .service_img {
+        height: 170px;
+    }
+
+    .services_info .services_list .service_card .text {
+        padding: 10px 15px 0px 15px;
+    }
+
+    .services_info .services_list .service_card .text h3 {
+        font-size: 17px;
+    }
+
+    .services_info .services_list .service_card .text p {
+        font-size: 14px;
+    }
+
+    .services_info .services_list .service_card:nth-last-child(2), .services_info .services_list .service_card:last-child {
+        width: 287.5px;
+    }
+
+    .products_info .products_list {
+        gap: 25px;
+    }
+
+    .products_info .products_list .product_card, .products_info .products_list .product_card .product_img {
+        width: 175.3px;
+    }
+
+    .products_info .products_list .product_card:nth-last-child(2), .products_info .products_list .product_card:last-child {
+        display: none;
+    }
+
+    .partners_info .partners_list .partner_card {
+        width: 166.6px;
+    }
+
+    .main_page_leave_request_container {
+        flex-direction: row-reverse;
+    }
+
+    .main_page_leave_request_container form .inputs {
+        gap: 5px;
+        flex-direction: column;
+    }
+
+    .main_page_leave_request_container form button {
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+
+    .main_page_leave_request_container form {
+        margin-left: 30px;
+        margin-top: 10px;
+        width: 300px;
+    }
+
+    .main_page_leave_request_container .grace_logo_with_pen {
+        transform: translateX(25px);
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .main_page_leave_request_container .leave_request_background {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        z-index: -1;
+        width: 250px;
+        left: 0;
+    }
+
+    .main_page_leave_request_container {
+        transform: translateY(60%);
+    }
+}
+
+
+@media(max-width: 630px) {
+    .main_page_info .info .sub-header {
+        width: 285px;
+    }
+
+    .main_page_info .info .statistics div {
+        width: 48.4%;
+    }
+
+    .services_info .services_list .service_card, .services_info .services_list .service_card:nth-last-child(2) {
+        width: 47.3%;
+    }
+
+    .services_info .services_list .service_card:last-child {
+        width: 100%;
+    }
+
+    .services_info .services_list .service_card {
+        height: 210px;
+    }
+
+    .services_info .services_list .service_card .service_img {
+        height: 150px;
+    }
+
+    .services_info .services_list .service_card, .services_info .services_list .service_card:nth-last-child(2) {
+        width: 46.4%;
+    }
+
+    .services_info .services_list .service_card .text h3 {
+        font-size: 15px;
+    }
+
+    .services_info .services_list .service_card .text p {
+        font-size: 12px;
+    }
+
+    .products_info .products_list {
+        gap: 15px;
+    }
+
+    .products_info .products_list .product_card, .products_info .products_list .product_card .product_img {
+        width: 142px;
+    }
+
+    .products_info .products_list .product_card {
+        height: 285px;
+    }
+
+    .products_info .products_list .product_card .text .pre_product_name_block h4 {
+        font-size: 15px;
+    }
+
+    .products_info .products_list .product_card .text p {
+        font-size: 12px;
+    }
+
+    .products_info .products_list .product_card .text h3 {
+        font-size: 17px;
+    }
+
+    .products_info .products_list .product_card .text button {
+        font-size: 17px;
+        width: 90px;
+        height: 30px;
+    }
+
+    .products_info .go_to_store button {
+        font-size: 17px;
+        width: 270px;
+        height: 38px;
+        margin-top: 20px;
+    }
+
+    .partners_info .partners_list {
+        row-gap: 10px;
+    }
+
+    .partners_info .partners_list .partner_card {
+        width: 126.6px;
+    }
+
+    .main_page_leave_request_container form h1 {
+        font-size: 25px;
+    }
+
+    .main_page_leave_request_container form p {
+        font-size: 14px;
+    }
+
+    .main_page_leave_request_container form {
+        width: 210px;
+        margin-left: 25px;
+        margin-top: 7px;
+        height: fit-content;
+    }
+
+    .main_page_leave_request_container form button {
+        width: inherit;
+        font-size: 17px;
+        height: 35px;
+        margin-bottom: 12px;
+    }
+
+    .main_page_leave_request_container form input {
+        width: inherit;
+    }
+
+    .main_page_leave_request_container .grace_logo_with_pen {
+        height: inherit;
+        margin-top: 0;
+        transform: translateX(35px);
+    }
+
+    .main_page_leave_request_container {
+        transform: translateY(50%);
+    }
+}
+
+
+@media(max-width: 500px) {
+    .main_page_info .banner {
+        left: 46%;
+    }
+
+    .main_page_info .info h1 {
+        font-size: 25px;
+        line-height: 25px;
+        letter-spacing: 0px;
+        width: 265px;
+    }
+
+    .main_page_info .info .sub-header {
+        width: 215px;
+        font-size: 15px;
+    }
+
+    .main_page_info .info .statistics div {
+        width: 47.8%;
+    }
+
+    .main_page_info .info .statistics div h2 {
+        font-size: 23px;
+    }
+
+    .main_page_info .info .statistics div p {
+        font-size: 14px;
+    }
+
+    .products_info .products_list .product_card, .products_info .products_list .product_card .product_img {
+        width: 159.5px;
+    }
+
+    .products_info .products_list .product_card:nth-last-child(2) {
+        display: block;
+    }
+
+    .partners_info .partners_list .partner_card {
+        width: 150px;
+    }
+
+    .partners_info .partners_list {
+        row-gap: 12px;
+    }
+
+    .main_page_leave_request_container {
+        flex-direction: column;
+    }
+
+    .main_page_leave_request_container .grace_logo_with_pen {
+        height: 275px;
+        width: inherit;
+        transform: translateX(50px);
+    }
+
+    .main_page_leave_request_container form {
+        width: initial;
+        margin: 7px 25px 0px 25px;
+    }
+
+    .main_page_leave_request_container form button {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .main_page_leave_request_container {
+        transform: translateY(40%);
+    }
+}
