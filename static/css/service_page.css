@@ -1,0 +1,79 @@
+.service-images .images-list {
+    overflow-x: auto;
+
+}
+
+.service-images .images-list .images {
+    display: flex;
+    gap: 10px;
+}
+
+.service-images .images-list .images .image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    min-width: 220px;
+    height: 270px;
+
+    box-shadow: 0 0 10px 0px #c1bfbf;
+}
+
+.service-images {
+    position: relative;
+}
+
+.service-images .prev_btn, .service-images .next_btn {
+    position: absolute;
+    background-color: #53C0A9;
+
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    top: 40%;
+}
+
+.service-images .prev_btn {
+    left: -30px;
+}
+
+.service-images .next_btn {
+    right: -30px;
+}
+
+.service-images .bar-btt, .service-images .bar-ttb {
+    width: 15px;
+    height: 3px;
+    background-color: black;
+    margin: 7px 0;
+    transform: rotate(-45deg) translate(3px, 4px);
+}
+
+.service-images .bar-ttb {
+    transform: rotate(45deg) translate(3px, -4px);
+}
+
+.service-images .next_btn .bar-btt, .service-images .next_btn .bar-ttb {
+    width: 15px;
+    height: 3px;
+    background-color: black;
+    margin: 7px 0;
+    transform: rotate(-45deg) translate(6px, 5px);
+}
+
+.service-images .next_btn .bar-ttb {
+    transform: rotate(45deg) translate(6px, -5px);
+}
+
+@media(max-width: 500px) {
+    .service-images .prev_btn {
+        left: -20px;
+    }
+
+    .service-images .next_btn {
+        right: -20px;
+    }
+}

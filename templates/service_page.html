@@ -1,0 +1,45 @@
+{% extends 'base_body.html' %}
+
+{% block body %}
+
+<span style="display: none" id="page_title">Service Name</span>
+<button style="display: none" onclick="service_page_loaded()" id="page_loaded_js_function"></button>
+
+
+<div class="block">
+    <div class="container service-images">
+        <div class="images-list">
+            <div class="images">
+                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
+                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
+                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
+                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
+                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
+                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
+                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
+                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
+            </div>
+        </div>
+
+        <button class="prev_btn">
+            <div class="bar-btt"></div>
+            <div class="bar-ttb"></div>
+        </button>
+        <button class="next_btn">
+            <div class="bar-ttb"></div>
+            <div class="bar-btt"></div>
+        </button>
+    </div>
+</div>
+
+<div class="block">
+    <div class="container service-description">
+        <p>jio4jp3koj no
+        kjnoawpk
+        rjnieoj</p>
+    </div>
+</div>
+
+{% include 'request_form.html' %}
+
+{% endblock %}

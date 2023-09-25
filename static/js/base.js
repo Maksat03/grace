@@ -33,6 +33,8 @@ function load_page(url) {
             'X-Requested-With': 'XMLHttpRequest'
         }
     }).then((response) => {
+        window.scrollTo(0, 0);
+
         document.getElementsByClassName("body")[0].innerHTML = response.data;
 
         set_anchors_click_event_listener()
@@ -118,7 +120,10 @@ const observer = new IntersectionObserver(entries => {
 
 window.addEventListener("popstate", function(event) {
   if (event.type === "popstate") {
-    load_page(window.location.search)
+    disappear_page()
+    setTimeout(function() {
+        load_page(window.location.search)
+    }, 500);
   }
 })
 
