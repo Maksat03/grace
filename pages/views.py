@@ -20,3 +20,8 @@ def service_page_view(request):
 @base_page_or_content
 def store_page_view(request):
     return render(request, "store_page.html")
+
+
+@base_page_or_content
+def product_page_view(request):
+    return render(request, "product_page.html")

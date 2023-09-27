@@ -1,0 +1,12 @@
+@media(max-width: 1150px) {
+    .product_info .more_info .product_image {
+        min-width: 250px;
+        height: 300px;
+    }
+}
+
+@media(max-width: 900px) {
+    .product_info .more_info {
+        flex-direction: column;
+    }
+}
