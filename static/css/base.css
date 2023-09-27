@@ -53,7 +53,7 @@ body {
 
 .container {
 	width: 1100px;
-	margin: 40px auto 0 auto;
+	margin: 40px auto 10px auto;
 }
 
 .fade-out {
@@ -215,12 +215,14 @@ body {
 }
 
 .navbar-container .leave_request_btn {
+    cursor: pointer;
     margin-left: auto;
     background-color: #53C0A9;
     border: none;
     border-radius: 5px;
     padding: 5px 18px;
     font-size: 17px;
+    color: #303030;
 }
 
 
@@ -252,6 +254,7 @@ body {
 }
 
 .burger-container .leave_request_btn {
+    cursor: pointer;
     background-color: #000000c2;
     color: white;
     font-size: 20px;

@@ -243,6 +243,9 @@
     box-shadow: 0 0 6px 0px #c7c5c5;
 
     padding: 4px;
+
+    color: black;
+    text-decoration: none;
 }
 
 
@@ -260,6 +263,10 @@
 
 .products_info .products_list .product_card .text {
     padding: 10px 7px 0px 7px;
+}
+
+.products_info .products_list .product_card .text h4 {
+    text-decoration: underline;
 }
 
 .products_info .products_list .product_card .text h4, .products_info .products_list .product_card .text p {
@@ -395,6 +402,7 @@
 }
 
 .main_page_leave_request_container form button {
+    cursor: pointer;
     width: 272.5px;
     height: 40px;
     border: none;    

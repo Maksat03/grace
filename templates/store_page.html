@@ -1,0 +1,89 @@
+{% extends 'base_body.html' %}
+
+{% block body %}
+
+<span style="display: none" id="page_title">Store</span>
+<button style="display: none" onclick="store_page_loaded()" id="page_loaded_js_function"></button>
+
+
+<div class="block store_page">
+    <div class="container products_info">
+        <details class="filter_details open_details" data-open="true" open>
+            <summary><span>Фильтр</span><img src="/static/imgs/details.png" alt=""></summary>
+
+            <div class="content">
+                <hr>
+
+                <div class="category">
+                    <b>Категория</b>
+
+                    <select v-model="order_by" @change="reset_then_get_products()">
+                        <option value="-id">Новинка</option>
+                        <option value="-price">Цена по убыванию</option>
+                        <option value="price">Цена по возрастанию</option>
+                    </select>
+                </div>
+
+                <div class="order_by">
+                    <b>Сортировка по</b>
+
+                    <select v-model="order_by" @change="reset_then_get_products()">
+                        <option value="-id">Новинка</option>
+                        <option value="-price">Цена по убыванию</option>
+                        <option value="price">Цена по возрастанию</option>
+                    </select>
+                </div>
+
+                <div class="price_range">
+                    <b>Цена</b>
+
+                    <div class="prices">
+                        <p style="margin-right: auto">MIN PRICE</p>
+                        <p>MAX PRICE</p>
+                    </div>
+
+                    <div class="price_range_slider">
+                        <hr>
+                        <input type="range" min="0" max="4096" value="0">
+                        <input type="range" min="0" max="4096" value="4096">
+                    </div>
+                </div>
+
+                <div class="brands">
+                    <b>Бренд</b>
+
+                    <div class="brands_checkbox">
+                        <label v-cloak>
+                            <input type="checkbox" @change="get_products(filtration.name, value.value)" v-cloak>
+                            <span v-cloak>${ brand }</span>
+                        </label>
+                        <label v-cloak>
+                            <input type="checkbox" @change="get_products(filtration.name, value.value)" v-cloak>
+                            <span v-cloak>${ brand }</span>
+                        </label>
+                        <label v-cloak>
+                            <input type="checkbox" @change="get_products(filtration.name, value.value)" v-cloak>
+                            <span v-cloak>${ brand }</span>
+                        </label>
+                        <label v-cloak>
+                            <input type="checkbox" @change="get_products(filtration.name, value.value)" v-cloak>
+                            <span v-cloak>${ brand }</span>
+                        </label>
+                        <label v-cloak>
+                            <input type="checkbox" @change="get_products(filtration.name, value.value)" v-cloak>
+                            <span v-cloak>${ brand }</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </details>
+
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            {% include "products.html" %}
+
+            <div id="pagination" style="margin-top: 50px;"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

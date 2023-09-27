@@ -17,6 +17,7 @@
     height: 270px;
 
     box-shadow: 0 0 10px 0px #c1bfbf;
+    cursor: pointer;
 }
 
 .service-images {
@@ -24,6 +25,7 @@
 }
 
 .service-images .prev_btn, .service-images .next_btn {
+    cursor: pointer;
     position: absolute;
     background-color: #53C0A9;
 
