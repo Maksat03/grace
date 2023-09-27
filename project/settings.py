@@ -11,7 +11,7 @@ DEBUG = True
 if DEBUG:
     DOMAIN = "127.0.0.1"
     SERVER = "127.0.0.1:8000"
-    BOT_TOKEN = '6454586115:AAG9og9TP0yxSefacJ-jiFolCGqyxxwrOx0'
+    BOT_TOKEN = '6110400554:AAFMH8jOOwYzq4IwVRX5CwScxQRwBz66ivY'
     TIME_DIFFERENCE_BETWEEN_SERVER = 0
 
     INTERNAL_IPS = [
@@ -60,14 +60,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'pages',
-    # 'services',
-    # 'product',
-    # 'request',
-    # 'settings',  # + contacts(+ social networks) + tg_ids
-    # 'user',
+    'service',
+    'store',
+    'request',
+    'user',
 
-    # 'base_object_presenter',
-    # 'debug_toolbar',
+    'base_object_presenter',
+    'debug_toolbar',
     'rest_framework'
 ]
 
@@ -81,7 +80,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 
     'pages.cache_control_middleware.CacheControlMiddleware'
 ]

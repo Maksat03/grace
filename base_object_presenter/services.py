@@ -20,16 +20,38 @@ class BaseServicesPresenter:
         }
 
     def get_many(self, get_many_request_schema: MutableMapping) -> BaseSerializer:
-        get_many_query = self.model_presenter.get_many_service()
+        ordering = get_many_request_schema.get("ordering", [])
+        filtration = get_many_request_schema.get("filtration", {})
+        offset = get_many_request_schema.get("offset", 0)
+        limit = get_many_request_schema.get("limit", 100)
+        searching = get_many_request_schema.get("searching", {})
 
+        words = searching.get("text", "").split()
+        searching_filters = []
+        searchable_fields = self.model_presenter.get_searchable_fields()
+
+        for searching_field in searching.get("searching_fields", []):
+            if searching_field.get("field_name") in searchable_fields:
+                if searching_field.get("with__icontains"):
+                    for query in words:
+                        searching_filters.append(Q(**{f"{searching_field['field_name']}__icontains": query.lower()}))
+                else:
+                    searching_filters.append(Q(**{searching_field["field_name"]: searching["text"].lower()}))
+
+        if len(searching_filters) > 0:
+            searching_filtration = functools.reduce(lambda a, b: a | b, searching_filters)
+        else:
+            searching_filtration = Q()
+
+        get_many_query = self.model_presenter.get_many_service()
         objects = (self.model_presenter.model.objects
                    .prefetch_related(*get_many_query["prefetch_related"])
                    .select_related(*get_many_query["select_related"])
-                   .filter(**{**get_many_query.get("filtration"), **get_many_request_schema.get("filtration", {})})
+                   .filter(searching_filtration, **{**get_many_query.get("filtration"), **filtration})
                    .annotate(**get_many_query["annotate"])
-                   .order_by(get_many_request_schema.get("order_by", "-id"))
+                   .order_by(*ordering)
                    .only(*get_many_query["only"])
-                   .distinct())
+                   .distinct()[offset:limit])
 
         return self.serializers["objects"](objects, many=True)
 
@@ -59,30 +81,6 @@ class BaseServicesPresenter:
         serializer = self.serializers["object_edit_form"](obj, data=edit_request_schema)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-
-    def search(self, search_input: str, searching_fields: list) -> BaseSerializer:
-        words = search_input.split()
-        icontains_filters = []
-        searchable_fields = self.model_presenter.get_searchable_fields()
-
-        for searching_field in searching_fields:
-            if searching_field in searchable_fields:
-                for query in words:
-                    icontains_filters.append(Q(**{f"{searching_field}__icontains": query.lower()}))
-
-        combined_filter = functools.reduce(lambda a, b: a | b, icontains_filters)
-
-        get_many_query = self.model_presenter.get_many_service()
-        objs = (self.model_presenter.model.objects
-                .prefetch_related(*get_many_query["prefetch_related"])
-                .select_related(*get_many_query["select_related"])
-                .filter(combined_filter)
-                .annotate(**get_many_query["annotate"])
-                .only(*get_many_query["only"])
-                .distinct()
-                .order_by("-id"))
-
-        return self.serializers["objects"](objs, many=True)
 
     def update_fields(self, obj_id: int, data: MutableMapping) -> None:
         updatable_fields = self.model_presenter.get_updatable_fields()

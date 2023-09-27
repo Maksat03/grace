@@ -22,21 +22,19 @@ from project import settings
 
 urlpatterns = [
     path('', include("pages.urls")),
-    # path('djadmin/', admin.site.urls),
-    #
-    # path('login/', LoginView.as_view()),
-    # path("logout/", LogoutView.as_view()),
+    path('djadmin/', admin.site.urls),
 
-    # path('api/services/', include("services.urls")),
-    # path('api/product/', include("product.urls")),
-    # path('api/request/', include("request.urls")),
-    # path('api/settings/', include("settings.urls")),
-    # path('api/user/', include("user.urls")),
+    path('login/', LoginView.as_view()),
+    path("logout/", LogoutView.as_view()),
+
+    path('api/service/', include("service.urls")),
+    path('api/store/', include("store.urls")),
+    path('api/request/', include("request.urls")),
+    path('api/user/', include("user.urls")),
 ]
 
-# if settings.DEBUG:
-#     import debug_toolbar
-#     urlpatterns = [
-#         path('__debug__/', include(debug_toolbar.urls)),
-#         # ...
-#     ] + urlpatterns
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
