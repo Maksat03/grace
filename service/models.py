@@ -29,10 +29,10 @@ class ServiceModelPresenter(BaseModelPresenter):
     @staticmethod
     def get_many_service():
         return {
-            "prefetch_related": ["sub_services"],
+            "prefetch_related": [],
             "select_related": [],
             "annotate": {"sub_services_count": Count("sub_services")},
-            "only": ["name", "poster"],
+            "only": ["id", "name", "poster"],
             "filtration": {}
         }
 
@@ -40,25 +40,26 @@ class ServiceModelPresenter(BaseModelPresenter):
     def get_service():
         return {
             "prefetch_related": ["images"],
-            "select_related": ["parent_service"],
-            "annotate": {"parent_service_name": F("parent_service__name")},
-            "only": ["name", "description", "poster", "parent_service", "images"],
+            "select_related": [],
+            "annotate": {"parent_service_name": F("parent_service__name"), "sub_services_count": Count("sub_services")},
+            "only": ["id", "name", "description", "poster", "parent_service", "images"],
         }
 
     @staticmethod
     def get_object_serializer_fields():
-        return ["name", "description", "poster", "parent_service_id"]
+        return ["id", "name", "description", "poster", "parent_service_id"]
 
     @staticmethod
     def get_object_serializer_extra_fields():
         return {
             "parent_service_name": serializers.CharField(max_length=255),
             "images": ServiceImageSerializer(many=True),
+            "sub_services_count": serializers.IntegerField()
         }
 
     @staticmethod
     def get_objects_serializer_fields():
-        return ["name", "poster"]
+        return ["id", "name", "poster"]
 
     @staticmethod
     def get_objects_serializer_extra_fields():

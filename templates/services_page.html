@@ -8,23 +8,29 @@
 
 <div class="block">
     <div class="container services_info">
+        {% if service %}
         <div class="about_service">
             <div class="text">
-                <h1>Service Name</h1>
-                <p class="prev_service_link"><a href="/services/">Назад на service name</a></p>
-                <p>Service Description Text Service Description Text Service Description Text
-                Service Description Text Service Description Text Service Description Text Service Description Text
-                Service Description Text Service Description Text Service Description Text Service Description Text
-                Service Description Text Service Description Text Service Description Text Service Description Text
-                Service Description Text </p>
+                <h1>{{ service.name }}</h1>
+                <p class="prev_service_link"><a href="/services/{% if service.parent_service_id %}?id={{ service.parent_service_id }}{% endif %}">Назад на {% if service.parent_service_id %}{{ service.parent_service_name }}{% else %}Наши услуги{% endif %}</a></p>
+                <div class="description">
+                    {% autoescape off %}
+                    {{ service.description }}
+                    {% endautoescape %}
+                </div>
             </div>
-            <div class="service_img" style="background-image: url(/static/imgs/service_image.png)"></div>
+            <div class="service_img" style="background-image: url({{ service.poster }})"></div>
         </div>
 
         <hr>
+        {% endif %}
 
-        <div>
+        <div class="services_page">
+            {% if service %}
             <h2>Виды</h2>
+            {% else %}
+            <h2>Наши услуги</h2>
+            {% endif %}
 
             {% include 'services.html' %}
         </div>

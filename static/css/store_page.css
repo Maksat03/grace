@@ -5,6 +5,7 @@
 
 .store_page .products_info .products_list {
     gap: 20px;
+    width: 100%;
 }
 
 .store_page .products_info .products_list .product_card, .store_page .products_info .products_list .product_card .product_img {

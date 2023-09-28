@@ -17,20 +17,20 @@
                 <div class="category">
                     <b>Категория</b>
 
-                    <select v-model="order_by" @change="reset_then_get_products()">
-                        <option value="-id">Новинка</option>
-                        <option value="-price">Цена по убыванию</option>
-                        <option value="price">Цена по возрастанию</option>
+                    <select v-model="category" onchange="open_category()" id="category_select">
+                        {% for category in categories %}
+                        <option value="{{ category }}"{% if category == selected_category %} selected{% endif %}>{{ category }}</option>
+                        {% endfor %}
                     </select>
                 </div>
 
                 <div class="order_by">
                     <b>Сортировка по</b>
 
-                    <select v-model="order_by" @change="reset_then_get_products()">
-                        <option value="-id">Новинка</option>
-                        <option value="-price">Цена по убыванию</option>
-                        <option value="price">Цена по возрастанию</option>
+                    <select v-model="ordering" onchange="get_products()" id="ordering_select">
+                        <option value="-id"{% if selected_ordering == "-id" %} selected{% endif %}>Новинка</option>
+                        <option value="-price"{% if selected_ordering == "-price" %} selected{% endif %}>Цена по убыванию</option>
+                        <option value="price"{% if selected_ordering == "price" %} selected{% endif %}>Цена по возрастанию</option>
                     </select>
                 </div>
 
@@ -38,14 +38,14 @@
                     <b>Цена</b>
 
                     <div class="prices">
-                        <p style="margin-right: auto">MIN PRICE</p>
-                        <p>MAX PRICE</p>
+                        <p id="min_price_text" style="margin-right: auto">{{ selected_min_price }}</p>
+                        <p id="max_price_text">{{ selected_max_price }}</p>
                     </div>
 
                     <div class="price_range_slider">
                         <hr>
-                        <input type="range" min="0" max="4096" value="0">
-                        <input type="range" min="0" max="4096" value="4096">
+                        <input id="min_price_input" step="1000" type="range" min="{{ min_price }}" max="{{ max_price }}" value="{{ selected_min_price }}" oninput="slide_min_price()" onchange="get_products()">
+                        <input id="max_price_input" step="1000" type="range" min="{{ min_price }}" max="{{ max_price }}" value="{{ selected_max_price }}" oninput="slide_max_price()" onchange="get_products()">
                     </div>
                 </div>
 
@@ -53,32 +53,18 @@
                     <b>Бренд</b>
 
                     <div class="brands_checkbox">
-                        <label v-cloak>
-                            <input type="checkbox" @change="get_products(filtration.name, value.value)" v-cloak>
-                            <span v-cloak>${ brand }</span>
+                        {% for brand in brands %}
+                        <label>
+                            <input type="checkbox" value="{{ brand }}"{% if brand in selected_brands %} checked{% endif %} onchange="get_products()">
+                            <span>{{ brand }}</span>
                         </label>
-                        <label v-cloak>
-                            <input type="checkbox" @change="get_products(filtration.name, value.value)" v-cloak>
-                            <span v-cloak>${ brand }</span>
-                        </label>
-                        <label v-cloak>
-                            <input type="checkbox" @change="get_products(filtration.name, value.value)" v-cloak>
-                            <span v-cloak>${ brand }</span>
-                        </label>
-                        <label v-cloak>
-                            <input type="checkbox" @change="get_products(filtration.name, value.value)" v-cloak>
-                            <span v-cloak>${ brand }</span>
-                        </label>
-                        <label v-cloak>
-                            <input type="checkbox" @change="get_products(filtration.name, value.value)" v-cloak>
-                            <span v-cloak>${ brand }</span>
-                        </label>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </details>
 
-        <div style="display: flex; flex-direction: column; align-items: center;">
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
             {% include "products.html" %}
 
             <div id="pagination" style="margin-top: 50px;"></div>

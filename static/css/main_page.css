@@ -295,6 +295,7 @@
     height: 32px;
     color: white;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .products_info .go_to_store {

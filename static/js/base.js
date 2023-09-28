@@ -46,34 +46,39 @@ function load_page(url) {
 }
 
 
+function custom_anchors_click_event(event) {
+    event.preventDefault();
+
+    disappear_page()
+
+    setTimeout(function() {
+        var href = event.target.getAttribute('href');
+
+        if (!href) {
+            var parent = event.target.parentNode
+
+            while (true) {
+                if (parent.tagName == "A") {
+                    href = parent.getAttribute('href')
+                    break
+                } else {
+                    parent = parent.parentNode
+                }
+            }
+        }
+
+        window.history.pushState({}, "", href);
+        load_page(href);
+    }, 500);
+}
+
+
 function set_anchors_click_event_listener() {
     var anchors = document.querySelectorAll('a')
 
     anchors.forEach(function(anchor) {
         anchor.addEventListener('click', function(event) {
-            event.preventDefault();
-
-            disappear_page()
-
-            setTimeout(function() {
-                var href = event.target.getAttribute('href');
-
-                if (!href) {
-                    var parent = event.target.parentNode
-
-                    while (true) {
-                        if (parent.tagName == "A") {
-                            href = parent.getAttribute('href')
-                            break
-                        } else {
-                            parent = parent.parentNode
-                        }
-                    }
-                }
-
-                window.history.pushState({}, "", href);
-                load_page(href);
-            }, 500);
+            custom_anchors_click_event(event)
         });
     });
 }

@@ -2,7 +2,7 @@
 
 {% block body %}
 
-<span style="display: none" id="page_title">Service Name</span>
+<span style="display: none" id="page_title">{{ service.name }}</span>
 <button style="display: none" onclick="service_page_loaded()" id="page_loaded_js_function"></button>
 
 
@@ -10,14 +10,9 @@
     <div class="container service-images">
         <div class="images-list">
             <div class="images">
-                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
-                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
-                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
-                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
-                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
-                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
-                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
-                <div class="image" style="background-image: url(/static/imgs/service_image.png/)"></div>
+                {% for image in service.images %}
+                <div class="image" style="background-image: url({{ image.image }})"></div>
+                {% endfor %}
             </div>
         </div>
 
@@ -34,10 +29,11 @@
 
 <div class="block">
     <div class="container service-description">
-        <h1>Service Name</h1>
-        <p>jio4jp3koj no
-        kjnoawpk
-        rjnieoj</p>
+        <h1>{{ service.name }}</h1>
+
+        {% autoescape off %}
+        {{ service.description }}
+        {% endautoescape %}
     </div>
 </div>
 

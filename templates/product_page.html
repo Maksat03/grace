@@ -1,32 +1,35 @@
 {% extends 'base_body.html' %}
+{% load humanize %}
 
 {% block body %}
 
-<span style="display: none" id="page_title">Product Name</span>
+<span style="display: none" id="page_title">{{ product.name }}</span>
 <button style="display: none" onclick="product_page_loaded()" id="page_loaded_js_function"></button>
 
 
 <div class="block">
     <div class="container product_info">
-        <h1>Product Name</h1>
+        <h1>{{ product.name }}</h1>
 
         <div class="more_info">
-            <div class="product_image" style="background-image: url(/static/imgs/product_img.png)"></div>
+            <div class="product_image" style="background-image: url({{ product.poster }})"></div>
 
             <div class="text">
-                <h2>About Product</h2>
-                <p><b>Категория</b>: QWERTY</p>
-                <p><b>CODE</b>: QWERTY</p>
-                <p><b>BRAND</b>: ASDFZXC</p>
-                <p><b>Descripion</b>:</p>
+                <h2>О товаре</h2>
+                <p><b>Категория</b>: {{ product.category }}</p>
+                <p><b>Код товара</b>: {{ product.code }}</p>
+                <p><b>Бренд</b>: {{ product.brand }}</p>
+                <p><b>Описания</b>:</p>
 
                 <div class="description" style="margin-top: 5px;">
-                    kodjknsrewkpql[kojn kmklkwoijhbjo2pwkmejn pl;kodjknsrewkpql[kojn kmklkwoijhbjo2pwkmejn pl;kodjknsrewkpql[kojn kmklkwoijhbjo2pwkmejn pl;kodjknsrewkpql[kojn kmklkwoijhbjo2pwkmejn pl;kodjknsrewkpql[kojn kmklkwoijhbjo2pwkmejn pl;kodjknsrewkpql[kojn kmklkwoijhbjo2pwkmejn pl;kodjknsrewkpql[kojn kmklkwoijhbjo2pwkmejn pl;kodjknsrewkpql[kojn kmklkwoijhbjo2pwkmejn pl;kodjknsrewkpql[kojn kmklkwoijhbjo2pwkmejn pl;
+                    {% autoescape off %}
+                    {{ product.description }}
+                    {% endautoescape %}
                 </div>
 
                 <div class="buy">
-                    <button>Buy</button>
-                    <h2>499000 tg</h2>
+                    <button>Купить</button>
+                    <h2>{{ product.price|intcomma }} тг</h2>
                 </div>
             </div>
         </div>

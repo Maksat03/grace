@@ -21,13 +21,13 @@ class StoreModelPresenter(BaseModelPresenter):
             "prefetch_related": [],
             "select_related": [],
             "annotate": {},
-            "only": ["name", "poster", "code", "price"],
+            "only": ["id", "name", "poster", "code", "price"],
             "filtration": {}
         }
 
     @staticmethod
     def get_objects_serializer_fields():
-        return ["name", "poster", "code", "price"]
+        return ["id", "name", "poster", "code", "price"]
 
     @staticmethod
     def get_object_add_form_serializer_fields():

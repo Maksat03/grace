@@ -1,4 +1,5 @@
 import functools
+import json
 from typing import MutableMapping
 
 from django.db.models import Q
@@ -20,11 +21,11 @@ class BaseServicesPresenter:
         }
 
     def get_many(self, get_many_request_schema: MutableMapping) -> BaseSerializer:
-        ordering = get_many_request_schema.get("ordering", [])
-        filtration = get_many_request_schema.get("filtration", {})
+        ordering = json.loads(get_many_request_schema.get("ordering", "[]"))
+        filtration = json.loads(get_many_request_schema.get("filtration", "{}"))
         offset = get_many_request_schema.get("offset", 0)
-        limit = get_many_request_schema.get("limit", 100)
-        searching = get_many_request_schema.get("searching", {})
+        limit = get_many_request_schema.get("limit", None)
+        searching = json.loads(get_many_request_schema.get("searching", "{}"))
 
         words = searching.get("text", "").split()
         searching_filters = []

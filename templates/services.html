@@ -1,37 +1,11 @@
 <div class="services_list">
-    <a href="/service/" class="service_card">
-        <div class="service_img" style="background-image: url(/static/imgs/service_img.png);"></div>
+    {% for service in services %}
+    <a href="/services/?id={{ service.id }}" class="service_card">
+        <div class="service_img" style="background-image: url({{ service.poster }});"></div>
         <div class="text">
-            <h3>Вывески</h3>
-            <p>32 вида</p>
+            <h3>{{ service.name }}</h3>
+            <p>{{ service.sub_services_count }} вида</p>
         </div>
     </a>
-    <a href="/service/" class="service_card">
-        <div class="service_img" style="background-image: url(/static/imgs/service_img2.png);"></div>
-        <div class="text">
-            <h3>Service Name</h3>
-            <p>32 types</p>
-        </div>
-    </a>
-    <a href="/service/" class="service_card">
-        <div class="service_img" style="background-image: url(/static/imgs/service_img3.png);"></div>
-        <div class="text">
-            <h3>Service Name</h3>
-            <p>32 types</p>
-        </div>
-    </a>
-    <a href="/service/" class="service_card">
-        <div class="service_img" style="background-image: url(/static/imgs/service_img4.png);"></div>
-        <div class="text">
-            <h3>Service Name</h3>
-            <p>32 types</p>
-        </div>
-    </a>
-    <a href="/service/" class="service_card">
-        <div class="service_img" style="background-image: url(/static/imgs/service_img5.png);"></div>
-        <div class="text">
-            <h3>Service Name</h3>
-            <p>32 types</p>
-        </div>
-    </a>
+    {% endfor %}
 </div>
