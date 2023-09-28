@@ -88,7 +88,7 @@ class ServiceModelPresenter(BaseModelPresenter):
             "parent_service_id": serializers.IntegerField(required=False),
         }
 
-    def object_form_serializer_create(self, validated_data):
+    def object_add_form_serializer_create(self, validated_data):
         images = validated_data.pop("images", [])
         files = validated_data.pop("files", {})
 
@@ -103,7 +103,7 @@ class ServiceModelPresenter(BaseModelPresenter):
 
         return service
 
-    def object_form_serializer_update(self, instance, validated_data):
+    def object_edit_form_serializer_update(self, instance, validated_data):
         images = validated_data.pop("images", [])
         files = validated_data.pop("files", {})
 

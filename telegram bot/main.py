@@ -15,10 +15,11 @@ def save_tg_id(tg_id):
         with open('tg_ids.txt', 'r') as file:
             for line in file:
                 tg_ids.append(line.strip())
-    except:
-        pass
+    except Exception as e:
+        print(e)
 
-    if not (tg_id in tg_ids):
+    if not (str(tg_id) in tg_ids):
+        tg_ids.append(str(tg_id))
         with open('tg_ids.txt', 'w') as file:
             file.write("\n".join(tg_ids))
 

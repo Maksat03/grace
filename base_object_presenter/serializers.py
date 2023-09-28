@@ -37,7 +37,7 @@ class BaseSerializer(serializers.ModelSerializer):
                 self.fields[field_name].initial = field_value
 
     def create(self, validated_data):
-        return getattr(self.model_presenter, f"{self.serializer_name}_serializer_create")(validated_data)
+        return self.model_presenter.object_add_form_serializer_create(validated_data)
 
     def update(self, instance, validated_data):
-        return getattr(self.model_presenter, f"{self.serializer_name}_serializer_update")(instance, validated_data)
+        return self.model_presenter.object_edit_form_serializer_update(instance, validated_data)
