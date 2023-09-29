@@ -12,7 +12,7 @@
                 <a href="/about_us/">О нас</a>
             </div>
 
-            <button class="leave_request_btn">Оставить заявку</button>
+            <button class="leave_request_btn" onclick="open_request_form()">Оставить заявку</button>
 
             <div class="hamburger-menu" onclick="open_burger()">
                 <div class="bar"></div>
@@ -26,7 +26,7 @@
                     <h2><a href="/services/">Услуги</a></h2>
                     <h2><a href="/store/">Магазин</a></h2>
                     <h2><a href="/about_us/">О нас</a></h2>
-                    <button class="leave_request_btn" style="display: block">Оставить заявку</button>
+                    <button class="leave_request_btn" style="display: block" onclick="open_request_form()">Оставить заявку</button>
                 </div>
             </div>
         </div>
@@ -56,4 +56,56 @@
             <p><a href="/about_us/">О нас</a></p>
         </div>
     </div>
+</div>
+
+<div id="request-form-window">
+    <div class="request-form-block">
+        <div style="display: flex">
+            <h4 style="margin-top: 0">Оставить заявку</h4>
+            <span class="close" onclick="close_request_form()" style="color: black; top: 5px; right: 20px;">×</span>
+        </div>
+
+        <form onsubmit="leave_request_form_submit(event)" style="display: flex; flex-direction: column; margin-top: 15px">
+            {% csrf_token %}
+            <input type="text" placeholder="ФИО" id="request-form-fullname" name="fullname">
+            <input type="text" placeholder="Номер телефона" id="request-form-phone_number" name="phone_number">
+
+            <button type="submit">Оставить заявку</button>
+        </form>
+    </div>
+</div>
+
+
+
+<div id="buy-form-window">
+    <form onsubmit="buy_form_submit(event)" class="buy-form-block">
+        <input type="hidden" value="" name="product_id" id="buy-form-product_id">
+        <div style="display: flex">
+            <h4 style="margin-top: 0">Купить товар</h4>
+            <span class="close" onclick="close_buy_form()" style="color: black; top: 5px; right: 20px;">×</span>
+        </div>
+
+        <div style="display: flex; gap: 10px">
+            <div id="product_poster"></div>
+
+            <div>
+                <h5 style="margin-top: 0" id="product_name"></h5>
+                <h6 id="product_code"></h6>
+                <div style="display: flex; gap: 10px; margin-top: 10px">
+                    <input type="number" id="product_count" placeholder="штук" oninput="set_product_sum()" name="count">
+                    <h5 id="product_price"><span></span> тг</h5>
+                </div>
+            </div>
+        </div>
+
+        <h5 style="margin-top: 20px">Итого: <span id="product_sum"></span> тг</h5>
+
+        <div class="form" style="display: flex; flex-direction: column; margin-top: 15px">
+            {% csrf_token %}
+            <input type="text" placeholder="ФИО" id="buy-form-fullname" name="fullname">
+            <input type="text" placeholder="Номер телефона" id="buy-form-phone_number" name="phone_number">
+
+            <button type="submit">Оставить заявку</button>
+        </div>
+    </form>
 </div>

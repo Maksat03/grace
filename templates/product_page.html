@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="buy">
-                    <button>Купить</button>
+                    <button onclick="open_buy_form({{ product.id }}, '{{ product.name }}', '{{ product.poster }}', '{{ product.price }}', '{{ product.code }}')">Купить</button>
                     <h2>{{ product.price|intcomma }} тг</h2>
                 </div>
             </div>

@@ -33,6 +33,7 @@ body {
 
 .main_content {
     flex: 1;
+    min-height: 100vh;
 }
 
 .footer-block {
@@ -87,7 +88,7 @@ body {
 
 .hamburger-menu {
 	margin-left: auto;
-	z-index: 5000;
+	z-index: 10;
 	cursor: pointer;
 	display: none;
 }
@@ -118,7 +119,7 @@ body {
 
 .burger {
     position: fixed;
-    z-index: 4000;
+    z-index: 9;
 
     top: -40px;
     right: -45px;

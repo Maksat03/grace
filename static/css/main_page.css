@@ -303,7 +303,7 @@
     display: flex;
 }
 
-.products_info .go_to_store button {
+.products_info .go_to_store a {
     margin: 25px auto 0px auto;
     width: 285px;
     height: 40px;
@@ -312,9 +312,16 @@
     font-size: 18px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
-
+.products_info .go_to_store a span {
+    width: 100%;
+}
 
 
 
@@ -426,6 +433,61 @@
 
 .main_page_leave_request_container .leave_request_background {
     display: none;
+}
+
+#buy-form-window, #request-form-window {
+    display: none;
+    background: rgba(102, 102, 102, 0.75);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 50;
+}
+
+#buy-form-window #product_poster {
+    border: 1px solid black;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 75px;
+    height: 75px
+}
+
+#buy-form-window .buy-form-block, #request-form-window .request-form-block {
+    background: white;
+    width: 50%;
+    margin: 15% auto auto auto;
+    padding: 30px;
+    min-width: fit-content;
+    position: relative;
+}
+
+#buy-form-window h5, h6 {
+    margin: 5px 0;
+}
+
+#buy-form-window #product_count {
+    width: 45px;
+    outline: none;
+}
+
+#buy-form-window form input, #request-form-window form input {
+    width: 200px;
+    height: 25px;
+    padding: 0 5px;
+    outline: none;
+    margin-bottom: 8px;
+}
+
+#buy-form-window form button, #request-form-window form button {
+    background: black;
+    color: white;
+    width: 175px;
+    height: 27px;
+    margin-top: 25px;
+    border: none;
+    font-size: 12px;
 }
 
 

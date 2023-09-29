@@ -2,13 +2,14 @@
     <div class="container main_page_leave_request_container">
         <div class="grace_logo_with_pen"></div>
 
-        <form>
+        <form onsubmit="leave_request_form_submit(event)">
+            {% csrf_token %}
             <h1>Оставить заявку</h1>
             <p>Оставьте заявку на консультацию и получите 10% скидку.</p>
 
             <div class="inputs">
-                <input type="text" placeholder="ФИО">
-                <input type="text" placeholder="Номер телефона">
+                <input type="text" placeholder="ФИО" name="fullname">
+                <input type="text" placeholder="Номер телефона" name="phone_number">
             </div>
 
             <button type="submit"><span>Оставить заявку</span></button>

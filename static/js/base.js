@@ -1,3 +1,13 @@
+let anchors_disabled = false
+
+function disable_anchors() {
+    anchors_disabled = true
+}
+
+function enable_anchors() {
+    anchors_disabled = false
+}
+
 function set_page_title() {
     document.title = document.getElementById("page_title").innerText
 
@@ -48,6 +58,10 @@ function load_page(url) {
 
 function custom_anchors_click_event(event) {
     event.preventDefault();
+
+    if (anchors_disabled) {
+        return
+    }
 
     disappear_page()
 
@@ -133,3 +147,43 @@ window.addEventListener("popstate", function(event) {
 })
 
 
+function open_request_form() {
+    document.getElementById("request-form-window").style.display = "block"
+}
+
+function close_request_form() {
+    document.getElementById("request-form-window").style.display = "none"
+}
+
+function leave_request_form_submit(event) {
+    event.preventDefault()
+
+    var form = event.target
+    var formData = {};
+
+    for (var i = 0; i < form.elements.length; i++) {
+        var element = form.elements[i];
+
+        if (element.tagName === 'INPUT' && element.hasAttribute('name')) {
+          var name = element.getAttribute('name');
+          var value = element.value;
+          formData[name] = value;
+        }
+    }
+
+    axios.post("/api/request/add/", formData, {
+        headers: {
+            "X-CSRFToken": $cookies.get("csrftoken"),
+        }
+    }).then((response) => {
+        sweetalert("Принято, менеджеры свяжутся с вами через несколько минут")
+    })
+}
+
+function sweetalert(title) {
+    Swal.fire(
+      'Grace Agency',
+      title,
+      'success'
+    )
+}

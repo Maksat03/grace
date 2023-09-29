@@ -101,7 +101,7 @@ function get_products() {
                                 <div class="after_product_name_block">
                                     <p>Код товара: ${ product.code }</p>
                                     <h3>${ product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') } тг</h3>
-                                    <button><span>купить</span></button>
+                                    <button onclick="open_buy_form(${ product.id }, '${ product.name }', '${ product.poster }', '${ product.price }', '${ product.code }')" onmouseover="disable_anchors()" onmouseout="enable_anchors()"><span>купить</span></button>
                                 </div>
                             </div>
                         </a>
@@ -111,6 +111,10 @@ function get_products() {
                 document.getElementsByClassName("products_list")[0].innerHTML = html;
             }
         })
+
+        if (response.data.length <= 12) {
+            document.getElementById("pagination").style.display = "none"
+        }
     })
 }
 

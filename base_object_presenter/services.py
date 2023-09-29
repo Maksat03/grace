@@ -21,11 +21,20 @@ class BaseServicesPresenter:
         }
 
     def get_many(self, get_many_request_schema: MutableMapping) -> BaseSerializer:
-        ordering = json.loads(get_many_request_schema.get("ordering", "[]"))
-        filtration = json.loads(get_many_request_schema.get("filtration", "{}"))
+        ordering = get_many_request_schema.get("ordering", [])
+        if type(ordering) == str:
+            ordering = json.loads(get_many_request_schema.get("ordering", "[]"))
+
+        filtration = get_many_request_schema.get("filtration", {})
+        if type(filtration) == str:
+            filtration = json.loads(get_many_request_schema.get("filtration", "{}"))
+
+        searching = get_many_request_schema.get("searching", {})
+        if type(searching) == str:
+            searching = json.loads(get_many_request_schema.get("searching", "{}"))
+
         offset = get_many_request_schema.get("offset", 0)
         limit = get_many_request_schema.get("limit", None)
-        searching = json.loads(get_many_request_schema.get("searching", "{}"))
 
         words = searching.get("text", "").split()
         searching_filters = []
