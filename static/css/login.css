@@ -1,0 +1,60 @@
+* {
+	box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "GeometriaRegular";
+    src: url("/static/GeometriaRegular.ttf") format("truetype");
+}
+
+body{
+	background-color: #EAEAEA;
+	font-family: "GeometriaRegular";
+}
+
+b{
+    width: 100%;
+    display: block;
+    background-color: #146C94;
+    padding: 20px 20px 20px 20px;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    color: white;
+}
+
+.asyl .login_form input{
+	display: block;
+	width: 300px;
+	margin: 10px 0;
+	padding: 10px;
+	font-size: 18px;
+	outline: none;
+	border-radius: 5px;
+	border: 0.5px solid rgba(0, 0, 0, .5);
+}
+
+.asyl .login_form{
+	padding-bottom: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 3px 3px rgba(0, 0, 0, .1);
+	width: fit-content;
+	margin: 30vh auto 0 auto;
+	background-color: white;
+	font-size: 24px;
+}
+
+.asyl_inputs{
+    padding: 20px 20px 0 20px
+}
+
+.asyl_inputs input[type='submit']{
+    background-color: #146C94;
+    color: white;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    cursor: pointer;
+}

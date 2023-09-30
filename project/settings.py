@@ -9,8 +9,7 @@ DEBUG = True
 
 
 if DEBUG:
-    DOMAIN = "127.0.0.1"
-    SERVER = "127.0.0.1:8000"
+    DOMAIN = "127.0.0.1:8000"
     BOT_TOKEN = '6110400554:AAFMH8jOOwYzq4IwVRX5CwScxQRwBz66ivY'
     TIME_DIFFERENCE_BETWEEN_SERVER = 0
 
@@ -22,12 +21,11 @@ if DEBUG:
     }
 else:
     DOMAIN = ""
-    SERVER = ""
     BOT_TOKEN = ''
     TIME_DIFFERENCE_BETWEEN_SERVER = 6
 
 
-ALLOWED_HOSTS = [DOMAIN, SERVER, "localhost", "192.168.117.119"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 WSGI_APPLICATION = 'project.wsgi.application'
 ROOT_URLCONF = 'project.urls'
 

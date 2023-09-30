@@ -67,6 +67,10 @@
 
         <form onsubmit="leave_request_form_submit(event)" style="display: flex; flex-direction: column; margin-top: 15px">
             {% csrf_token %}
+            <input type="hidden" name="category" value="services">
+            {% if service.name %}
+            <input type="hidden" name="service_name" value="{{ service.name }}">
+            {% endif %}
             <input type="text" placeholder="ФИО" id="request-form-fullname" name="fullname">
             <input type="text" placeholder="Номер телефона" id="request-form-phone_number" name="phone_number">
 
@@ -80,6 +84,8 @@
 <div id="buy-form-window">
     <form onsubmit="buy_form_submit(event)" class="buy-form-block">
         <input type="hidden" value="" name="product_id" id="buy-form-product_id">
+        <input type="hidden" name="category" value="store">
+
         <div style="display: flex">
             <h4 style="margin-top: 0">Купить товар</h4>
             <span class="close" onclick="close_buy_form()" style="color: black; top: 5px; right: 20px;">×</span>

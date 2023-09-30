@@ -4,6 +4,11 @@
 
         <form onsubmit="leave_request_form_submit(event)">
             {% csrf_token %}
+            <input type="hidden" name="category" value="services">
+            {% if service.name %}
+            <input type="hidden" name="service_name" value="{{ service.name }}">
+            {% endif %}
+
             <h1>Оставить заявку</h1>
             <p>Оставьте заявку на консультацию и получите 10% скидку.</p>
 

@@ -41,5 +41,6 @@ function buy_form_submit(event) {
         }
     }).then((response) => {
         sweetalert("Принято, менеджеры свяжутся с вами через несколько минут")
+        close_buy_form()
     })
 }

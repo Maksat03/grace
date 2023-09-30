@@ -2,13 +2,16 @@ from threading import Thread
 
 import requests
 from django.db import models
+from rest_framework import serializers
 
 from base_object_presenter.models import BaseModelPresenter
-from project.settings import BOT_TOKEN
+from project.settings import BOT_TOKEN, DOMAIN
 from project.utils import datetime_now
+from store.models import Product
 
 
 class Request(models.Model):
+    category = models.CharField(max_length=255, choices=(("services", "Услуги"), ("store", "Магазин")), default="services")
     fullname = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=20)
     created_at = models.DateTimeField(default=datetime_now, editable=False)
@@ -29,7 +32,15 @@ class RequestModelPresenter(BaseModelPresenter):
 
     @staticmethod
     def get_object_add_form_serializer_fields():
-        return ["fullname", "phone_number", "data"]
+        return ["category", "fullname", "phone_number", "data"]
+
+    @staticmethod
+    def get_object_add_form_serializer_extra_fields():
+        return {
+            "count": serializers.IntegerField(required=False),
+            "product_id": serializers.IntegerField(required=False),
+            "service_name": serializers.CharField(max_length=255, required=False),
+        }
 
     @staticmethod
     def get_updatable_fields():
@@ -54,7 +65,15 @@ class RequestModelPresenter(BaseModelPresenter):
             )
 
     def object_add_form_serializer_create(self, validated_data):
-        request = self.model.objects.create(**validated_data)
+        category = validated_data.pop("category")
+        fullname = validated_data.pop("fullname")
+        phone_number = validated_data.pop("phone_number")
+
+        data = {}
+        for key, value in validated_data.items():
+            data[key] = value
+
+        request = self.model.objects.create(category=category, fullname=fullname, phone_number=phone_number, data=data)
 
         notification_text = (
             f"<b>ФИО:</b> {request.fullname}\n",
@@ -62,14 +81,17 @@ class RequestModelPresenter(BaseModelPresenter):
             f"<b>Время:</b> {request.created_at}\n"
         )
 
-        if not request.data:
-            notification_text = (f"<b>Номер заявки №{request.id}\n</b>", *notification_text)
+        if category == "services":
+            notification_text = (f"<b>Номер заявки №{request.id}\n</b>", *notification_text,
+                                 f"<b>Услуга:</b> {request.data.get('service_name', 'не выбрано')}")
         else:
+            product = Product.objects.filter(id=request.data['product_id']).only("id", "name", "price").first()
+
             notification_text = (f"<b>Номер заказа №{request.id}\n</b>", *notification_text,
-                                 f"<b>Заказ:</b> {request.data['count']} шт {request.data['product']}")
+                                 f"<b>Заказ:</b> {request.data['count']} шт <a href='http://{DOMAIN}/product/{product.id}/'>{product.name}</a>\n"
+                                 f"<b>Итого:</b> {request.data['count'] * product.price} тг")
 
         notification_text = "\n".join(notification_text)
-
         Thread(daemon=True, target=self.send_tg_messages, args=(notification_text,)).start()
 
         return request

@@ -1,0 +1,194 @@
+@media (max-width: 1300px){
+  .container{
+    width: 970px;
+  }
+
+  .portfolio_info_img img{
+    height: 100px;
+  }
+
+  .footer_content{
+    margin-right: 80px;
+  }
+
+  .project_card{
+    margin: 0 10px 30px 10px;
+    width: calc(33.333% - 20px);
+  }
+
+  .our_projects_cards{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+  }
+}
+
+@media (max-width: 1000px){
+  .container{
+    width: 880px;
+  }
+
+  .footer_flex{
+    display: block;
+  }
+
+  .inner_flex{
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 900px){
+  .container{
+    width: 740px;
+  }
+
+  .portfolio_img{
+    min-width: 250px;
+    min-height: 330px;
+  }
+
+  .portfolio_info_img img{
+    height: 80px;
+  }
+
+  .project_card{
+    margin: 0 10px 20px 10px;
+    width: calc(33.333% - 20px);
+  }
+
+  .our_projects_cards{
+    margin: 0 -10px;
+  }
+
+  .project_img{
+    height: 170px;
+  }
+
+  .footer_content img{
+    height: 50px;
+  }
+}
+
+@media (max-width: 767px){
+  .container{
+    width: 550px;
+  }
+
+  .hamburger-menu{
+    display: block;
+  }
+
+  .nav_left{
+    width: 100%;
+  }
+
+  .nav_link{
+    display: none;
+  }
+
+  .nav_left .nav_link{
+    margin-right: auto;
+  }
+
+  .logo{
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .project_card{
+    margin: 0 auto 20px auto;
+    width: 270px;
+  }
+
+  .portfolio_info{
+    margin-right: 0;
+  }
+
+  .portfolio_img{
+    display: none;
+  }
+
+  .our_projects_types{
+    position: static;
+    margin: 10px auto 0 auto;
+  }
+
+  .navbar{
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 560px){
+  .container{
+    width: 390px;
+  }
+
+  .portfolio_info_img img{
+    height: 70px;
+  }
+
+  .project_info b{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .project_card{
+    width: 300px;
+  }
+
+  .leave_request_inputs{
+    width: 100%;
+  }
+
+  .leave_request{
+    padding: 20px;
+  }
+
+  .inner_flex{
+    display: block;
+  }
+
+  .inner_flex .footer_content{
+    margin-bottom: 20px;
+  }
+
+  .our_projects hr{
+    margin-top: 30px;
+  }
+
+  .our_projects_cards{
+    margin: 0 0px;
+  }
+
+  .footer_content img{
+    height: 40px;
+  }
+}
+
+@media (max-width: 400px){
+  .container{
+    width: 320px;
+  }
+
+  .portfolio_info_img img{
+    height: 50px;
+  }
+
+  .our_projects hr{
+    width: 100%;
+  }
+
+  .project_card{
+    width: calc(100% - 20px);
+  }
+
+  .leave_request_title p{
+    font-size: 20px;
+  }
+}

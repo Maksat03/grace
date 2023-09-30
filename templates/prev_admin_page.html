@@ -1,0 +1,432 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>qasymkitap.kz dashboard</title>
+
+	<link rel="stylesheet" href="{% static 'css/shabyt.css/baspa.css' %}">
+	<link rel="stylesheet" href="{% static 'css/shabyt.css/adminka_all_goods.css' %}">
+	<link rel="stylesheet" href="{% static 'css/shabyt.css/adminka_categories.css' %}">
+	<link rel="stylesheet" href="{% static 'css/shabyt.css/adminka_analytics.css' %}">
+	<link rel="stylesheet" href="{% static 'css/shabyt.css/about_order.css' %}">
+	<link rel="stylesheet" href="{% static 'css/shabyt.css/profile.css' %}">
+	<link rel="stylesheet" href="{% static 'css/shabyt.css/adminka_order.css' %}">
+	<link rel="stylesheet" href="{% static 'css/shabyt.css/adminka_checkbox.css' %}">
+	<link rel="stylesheet" href="{% static 'css/shabyt.css/adminka_settings.css' %}">
+	<link rel="stylesheet" href="{% static 'css/shabyt.css/window.css' %}">
+	<link rel="stylesheet" href="{% static 'css/shabyt.css/adminka_add_category.css' %}">
+	<link rel="stylesheet" href="{% static 'css/shabyt.css/adminka_add_product.css' %}">
+	<link rel="stylesheet" href="{% static 'css/shabyt.css/quill.snow.css' %}">
+	<link rel="stylesheet" href="{% static 'css/shabyt.css/default.min.css' %}">
+
+	<script src="{% static 'js/shabyt.js/packages/highlight.min.js' %}"></script>
+	<script src="{% static 'js/shabyt.js/packages/axios.min.js' %}"></script>
+	<script src="{% static 'js/shabyt.js/packages/quill.js' %}"></script>
+	<script src="{% static 'js/shabyt.js/packages/image-resize.min.js' %}"></script>
+	<script src="{% static 'js/shabyt.js/packages/sweetalert.min.js' %}"></script>
+	<script src="{% static 'js/shabyt.js/packages/vue.global.prod.js' %}"></script>
+	<script src="{% static 'js/shabyt.js/packages/vue-cookies.js' %}"></script>
+	<script src="{% static 'js/shabyt.js/packages/quill.imageCompressor.min.js' %}"></script>
+</head>
+<body style="font-family: sans-serif">
+	<div class="window">
+		<div class="vertical_menu" id="vertical_menu_app">
+			<div class="logo block border_bottom">
+				<a class="logo_form" href="/" style="margin-left: 0; text-decoration: none; color: black">qasymkitap.kz</a>
+			</div>
+
+			<div class="admin block border_bottom">
+				<b>ADMIN</b>
+			</div>
+
+			<div class="admin_sections block border_bottom">
+				<div class="admin_section">
+					<input type="radio" name="admin_section" id="goods" value="products" v-model="current_section" @change="open_section()">
+					<label for="goods">Кітаптар</label>
+				</div>
+
+				<div class="admin_section">
+					<input type="radio" name="admin_section" id="users" value="requests" v-model="current_section" @change="open_section()">
+					<label for="users">Тапсырыстар</label>
+				</div>
+			</div>
+
+			<div class="admin_settings block">
+				<div class="admin_section" name="admin_section">
+					<input type="radio" name="admin_section" id="settings_section" value="settings" v-model="current_section" @change="open_section()">
+					<label for="settings_section">Баптаулар</label>
+				</div>
+
+				<div class="quit">
+					<a href="{% url 'logout' %}">Шығу</a>
+				</div>
+			</div>
+		</div>
+
+		<div style="display: none" id="products">
+			<div class="main_container all_goods_container">
+				<div class="main_container_sections">
+					<div class="main_container_section">
+						<input type="radio" name="main_container_section" id="all_goods" value="kz" v-model="current_section" @change="open_section()">
+						<label for="all_goods">Қазақ әдебиеті</label>
+					</div>
+					<div class="main_container_section">
+						<input type="radio" name="main_container_section" id="residential" value="world" v-model="current_section" @change="open_section()">
+						<label for="residential">Әлем әдебиеті</label>
+					</div>
+					<div class="main_container_section">
+						<input type="radio" name="main_container_section" id="commercial" value="children" v-model="current_section" @change="open_section()">
+						<label for="commercial">Балалар әдебиеті</label>
+					</div>
+				</div>
+
+				<div class="categories_container">
+					<div class="categories_card_container">
+						<div class="add_category">
+							<a @click="open_product_form()" style="padding-left: 20px; padding-right: 20px;">Кітап қосу</a>
+						</div>
+						<div class="categories_cards_parts">
+							<div class="categories_photo">
+								<span>Суреті</span>
+							</div>
+
+							<div class="categories_name categories_category">
+								<span>Аты</span>
+							</div>
+
+							<div class="categories_category" style="margin-left: auto">
+								<span>Бағасы</span>
+							</div>
+
+							<div class="categories_edit">
+							</div>
+						</div>
+
+						<div v-for="product in products" class="categories_card_block" style="justify-content: flex-start" :id="'product_card_' + product.id">
+							<div class="categories_photo" :style="{backgroundImage: 'url(/media/' + product.poster + ')'}">
+							</div>
+
+							<div class="categories_name categories_category">
+								<span style="width: 490px">${ product.name }</span>
+							</div>
+
+							<div class="categories_category" style="padding-left: 20px">
+								<span>${ product.price }</span>
+							</div>
+
+							<div class="categories_edit">
+								<a @click="open_product_form(product)">Өзгерту</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="product_form_window">
+					<form id="product_form" @submit.prevent="product_form_submit()">
+						{% csrf_token %}
+						<div class="add_product_block">
+							<h2 style="margin-top: 0" v-if="product_form.id">Кітапті өзгерту</h2>
+							<h2 style="margin-top: 0" v-else>Кітап қосу</h2>
+
+							<div class="add_product block_css">
+								<b>Категория:</b>
+								<select v-model="product_form['category']" required>
+									<option value="kz">Қазақ әдебиеті</option>
+									<option value="world">Әлем әдебиеті</option>
+									<option value="children">Балалар әдебиеті</option>
+								</select>
+							</div>
+							<div class="add_product block_css">
+								<b>Аты:</b>
+								<input type="text" placeholder="Аты" required v-model="product_form['name']">
+							</div>
+							<div class="add_product block_css">
+								<b>Авторы:</b>
+								<input type="text" placeholder="Авторы" required v-model="product_form['author']">
+							</div>
+							<div class="add_product product_imgs_inputs">
+								<b>Обложка: </b>
+								<div style="margin-bottom: 5px" v-if="!product_poster_is_uploaded_to_input()">
+									<a class="uploaded_file_name" style="margin-right: 1px; width: fit-content; cursor: initial">Текущий:</a>
+									<a :href="product_form.poster" v-cloak class="uploaded_file_name" v-if="product_form.poster">${ product_form.poster.replace('/media/posters/', '') }</a>
+								</div>
+								<input id="poster_file_input" type="file" @change="handle_product_poster_upload($event)" :required="product_form.poster == ''" class="product_form_image_input">
+							</div>
+							<div class="add_product block_css">
+								<b>Бағасы:</b>
+								<input type="number" placeholder="Бағасы" required v-model="product_form['price']">
+							</div>
+							<div class="add_product block_css">
+								<b>Кітап жайлы</b>
+								<div id="product_form_description_editor"></div>
+							</div>
+
+							<div class="add_product characteristic">
+								<div class="characteristic_block">
+									<b>Опция аты</b>
+
+									<div v-for="(option, key) in product_form['options']" :key="key" class="characteristic_block_div">
+										<input type="text" required v-model="option.label">
+									</div>
+								</div>
+
+								<div class="characteristic_block" style="border-left: 1px solid;">
+									<b>Опция мәні</b>
+
+									<div v-for="(option, option_index) in product_form['options']" class="characteristic_values" :key="option_index">
+										<input type="text" required v-model="option.value">
+										<button type="button" @click="delete_option(option)"><img src="{% static 'imgs/shabyt.imgs/delete.png' %}" style="width: 20px; height: 20px"></button>
+									</div>
+								</div>
+							</div>
+
+							<button type="button" @click="add_product_option()" class="add_product_btn">Опция қосу</button>
+
+							<div class="add_product btns">
+								<div v-if="product_form.id">
+									<button class="add_btn" type="submit">Өзгерту</button>
+									<button class="delete_btn" type="button" @click="delete_product()">Удалить</button>
+								</div>
+								<div v-else>
+									<button class="add_btn" type="submit">Кітап қосу</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="close">
+							<a onclick='document.getElementById("product_form_window").style.display = "none"'><img src="{% static 'imgs/shabyt.imgs/cross.png' %}" alt=""></a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div style="display: none" id="requests">
+			<div class="main_container all_goods_container">
+				<div class="main_container_sections">
+					<div class="main_container_section">
+						<input type="radio" id="books_requests_radio" name="requests_container_section" value="books" v-model="current_section" @change="open_section()">
+						<label for="books_requests_radio">Кітаптар</label>
+					</div>
+
+					<div class="main_container_section">
+						<input type="radio" id="languages_requests_radio" name="requests_container_section" value="languages" v-model="current_section" @change="open_section()">
+						<label for="languages_requests_radio">Тіл курстары</label>
+					</div>
+
+					<div class="main_container_section">
+						<input type="radio" id="certificates_requests_radio" name="requests_container_section" value="certificates" v-model="current_section" @change="open_section()">
+						<label for="certificates_requests_radio">Сертификаттар</label>
+					</div>
+				</div>
+
+				<div class="categories_container">
+					<div class="categories_card_container">
+						<div class="categories_cards_parts">
+							<div class="categories_name categories_category">
+								<span>Аты-жөні</span>
+							</div>
+
+							<div class="categories_category">
+								<span>Телефон нөмірі</span>
+							</div>
+
+							<div class="categories_category">
+								<span>Уақыты</span>
+							</div>
+
+							<div class="categories_category">
+								<span>Қабылданған уақыт</span>
+							</div>
+
+							<div class="categories_category" v-if="current_section == 'books'">
+								<span>Себетте</span>
+							</div>
+
+							<div class="categories_category" v-if="current_section == 'languages'">
+								<span>Тіл</span>
+							</div>
+
+							<div class="categories_edit">
+							</div>
+						</div>
+
+						<div v-for="request in requests" class="categories_card_block">
+							<div class="categories_name categories_category">
+								<span>${ request.fullname }</span>
+							</div>
+
+							<div class="categories_category">
+								<span>${ request.phone_number }</span>
+							</div>
+
+							<div class="categories_category">
+								<span>${ request.created_at }</span>
+							</div>
+
+							<div class="categories_category">
+								<span>${ request.accepted_at }</span>
+							</div>
+
+							<ul class="categories_category" style="font-size: 13px; padding-left: 0px; width: 290px; padding-right: 20px" v-if="current_section == 'books'" v-html="request.request_text"></ul>
+							<ul class="categories_category" style="font-size: 13px; padding-left: 0px; width: 290px; padding-right: 20px" v-if="current_section == 'languages'" v-html="request.request_text"></ul>
+
+							<div class="categories_edit">
+								<a v-if="!request.is_accepted" @click="accept_request(request)" style="background-color: green">Қабылдау</a>
+								<span v-else style="color: green">Қабылданды</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div style="display: none" id="settings">
+			<div class="main_container settings_container">
+				<div v-if="!settings_section_is_opened" class="set_menu">
+					<div class="set">
+						<a href="#change_password_window">Пароль өзгерту</a>
+					</div>
+					<div class="set">
+						<a @click="open_languages_form()">Тіл курстары</a>
+					</div>
+					<div class="set">
+						<a @click="open_tg_ids_form()">Telegram IDs</a>
+					</div>
+					<div class="set">
+						<a @click="open_carousel_images_form()">Карусель</a>
+					</div>
+				</div>
+
+
+
+
+
+				<div class="contacts_block" v-if="languages_form_is_opened" id="contacts_settings">
+					<div class="go_back">
+						<a @click="languages_form_is_opened = false">Артқа</a>
+					</div>
+
+					<form @submit.prevent="save_languages()" class="carousel_s_block">
+						{% csrf_token %}
+						<div class="contacts">
+							<div class="contact" v-for="language in languages_form">
+								<h3 style="width: 20%">${ language.label }</h3>
+								<input type="text" v-model="language.course_duration" placeholder="Ұзақтығы">
+								<input type="text" v-model="language.lessons_for_week" placeholder="Сабақ">
+							</div>
+						</div>
+
+						<div class="edit_btns">
+							<button type="submit" class="save" :disabled="!languages_form_is_opened">Сақтау</button>
+						</div>
+					</form>
+				</div>
+
+
+
+
+
+				<div class="contacts_block" v-if="tg_ids_form_is_opened">
+					<div class="go_back">
+						<a @click="tg_ids_form_is_opened = false">Артқа</a>
+					</div>
+
+					<form @submit.prevent="save_tg_ids()" class="carousel_s_block">
+						{% csrf_token %}
+						<div class="contacts">
+							<textarea v-model="tg_ids_form" cols="30" rows="10"></textarea>
+						</div>
+
+						<div class="edit_btns">
+							<button type="submit" class="save" :disabled="!tg_ids_form_is_opened">Сақтау</button>
+						</div>
+					</form>
+				</div>
+
+
+
+
+
+
+				<div class="carousel_block" v-if="carousel_images_form_is_opened">
+					<div class="go_back">
+						<a @click="carousel_images_form_is_opened = false">Артқа</a>
+					</div>
+
+					<form @submit.prevent="save_carousel_images()" class="carousel_s_block">
+						{% csrf_token %}
+					  <div v-for="(image, key) in carousel_images" :key="key" class="car_input">
+						  <input placeholder="Ссылка" type="text" v-model="image.link">
+						<input type="file" @change="handle_file_upload(image, $event)" :required="image.image == ''" :style="[image.image != null && !image_is_uploaded_to_input(image) ? {'width': 'initial'} : {'width': '100%'}]">
+						<span v-if="image.image != null && !image_is_uploaded_to_input(image)">Текущий: <a :href="image.image" v-cloak>${ image.image }</a></span>
+						<button type="button" @click="delete_image(key)"><img src="{% static 'imgs/shabyt.imgs/delete.png' %}"></button>
+					  </div>
+
+						<div class="add_img">
+							<a @click="add_image()">Сурет қосу</a>
+						</div>
+
+					  <div class="edit_btns">
+						<button type="submit" class="save" :disabled="!carousel_images_form_is_opened">Сақтау</button>
+					  </div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div id="change_password_window">
+			<form @submit.prevent="change_password_request()">
+				{% csrf_token %}
+				<div class="reg_block">
+					<b>Пароль өзгерту</b>
+
+					<div class="reg_inputs">
+						<span>Ескі пароль</span>
+						<input type="password" v-model="ChangePasswordRequestSchema['old_password']" required>
+					</div>
+
+					<div class="reg_inputs">
+						<span>Жаңа пароль</span>
+						<input type="password" v-model="ChangePasswordRequestSchema['new_password1']" required>
+					</div>
+
+					<div class="reg_inputs">
+						<span>Парольді растау</span>
+						<input type="password" v-model="ChangePasswordRequestSchema['new_password2']" required>
+					</div>
+
+					<ul class="reg_text" style="padding-left: 20px; display: block">
+						<li v-for="error in change_password_form_errors" style="color: red" v-cloak>${ error }</li>
+					</ul>
+
+					<div class="reg_inputs" style="margin-top: 20px">
+						<button type="submit" id="change_password_form_submit_btn">Парольді өзгерту</button>
+					</div>
+
+					<div class="close">
+						<a href="#"><img src="{% static 'imgs/shabyt.imgs/cross.png' %}" alt=""></a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+	<script src="{% static 'js/shabyt.js/services/product_services.js' %}"></script>
+	<script src="{% static 'js/shabyt.js/services/site_settings_services.js' %}"></script>
+
+	<script src="{% static 'js/shabyt.js/pages/admin_page/products_app.js' %}"></script>
+	<script src="{% static 'js/shabyt.js/pages/admin_page/requests_app.js' %}"></script>
+	<script src="{% static 'js/shabyt.js/pages/admin_page/settings_app.js' %}"></script>
+
+	<script src="{% static 'js/shabyt.js/pages/admin_page/vertical_menu_app.js' %}"></script>
+
+	<script src="{% static 'js/shabyt.js/auth/index.js' %}"></script>
+	<script src="{% static 'js/shabyt.js/auth/vue_apps.js' %}"></script>
+	<script src="{% static 'js/shabyt.js/services/user_services.js' %}"></script>
+</body>
+</html>

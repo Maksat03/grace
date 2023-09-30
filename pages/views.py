@@ -1,6 +1,6 @@
 import json
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from project.utils import base_page_or_content
 from service.presenter import service_services_presenter
 from store.presenter import store_services_presenter
@@ -62,3 +62,13 @@ def store_page_view(request):
 def product_page_view(request, product_id):
     product = store_services_presenter.get(product_id)
     return render(request, "product_page.html", {"product": product.data})
+
+
+def admin_page_view(request):
+    if not request.user.is_authenticated:
+        return redirect("/login/")
+
+    if request.user.is_superuser or request.user.is_staff:
+        return render(request, "admin_page.html")
+
+    return redirect("/")

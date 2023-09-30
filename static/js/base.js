@@ -177,6 +177,7 @@ function leave_request_form_submit(event) {
         }
     }).then((response) => {
         sweetalert("Принято, менеджеры свяжутся с вами через несколько минут")
+        close_request_form()
     })
 }
 
