@@ -20,12 +20,6 @@ class Request(models.Model):
     comment = models.TextField(null=True, blank=True)
     data = models.JSONField(null=True, blank=True)
 
-    def save(self, *args, **kwargs):
-        if self.pk:
-            self.answered_at = datetime_now()
-
-        super().save(*args, **kwargs)
-
 
 class RequestModelPresenter(BaseModelPresenter):
     model = Request
@@ -69,9 +63,15 @@ class RequestModelPresenter(BaseModelPresenter):
         fullname = validated_data.pop("fullname")
         phone_number = validated_data.pop("phone_number")
 
+        if category == "store":
+            product = Product.objects.filter(id=validated_data.get('product_id')).only("id", "name", "price").first()
+
         data = {}
         for key, value in validated_data.items():
             data[key] = value
+            if key == "count":
+                data["sum"] = data[key] * product.price
+                data["product_name"] = product.name
 
         request = self.model.objects.create(category=category, fullname=fullname, phone_number=phone_number, data=data)
 
@@ -84,13 +84,16 @@ class RequestModelPresenter(BaseModelPresenter):
         if category == "services":
             notification_text = (f"<b>Номер заявки №{request.id}\n</b>", *notification_text,
                                  f"<b>Услуга:</b> {request.data.get('service_name', 'не выбрано')}")
-        else:
-            product = Product.objects.filter(id=request.data['product_id']).only("id", "name", "price").first()
 
+            request.data = {'text': request.data.get('service_name', 'не выбрано')}
+        else:
             notification_text = (f"<b>Номер заказа №{request.id}\n</b>", *notification_text,
                                  f"<b>Заказ:</b> {request.data['count']} шт <a href='http://{DOMAIN}/product/{product.id}/'>{product.name}</a>\n"
                                  f"<b>Итого:</b> {request.data['count'] * product.price} тг")
+            request.data = {'text': f"{request.data['count']} шт <a href='http://{DOMAIN}/product/{product.id}/'>{product.name}</a>\n"
+                                    f"<b>Итого:</b> {request.data['count'] * product.price} тг"}
 
+        request.save(update_fields=['data'])
         notification_text = "\n".join(notification_text)
         Thread(daemon=True, target=self.send_tg_messages, args=(notification_text,)).start()
 

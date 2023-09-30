@@ -43,3 +43,8 @@
 .product_info .more_info .text .buy h2 {
     margin: 0;
 }
+
+.product_page .main_page_leave_request_container {
+    opacity: 1;
+    transform: translate(0, 0)
+}

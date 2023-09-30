@@ -96,7 +96,7 @@ class BaseServicesPresenter:
         updatable_fields = self.model_presenter.get_updatable_fields()
 
         for key, value in data.items():
-            if data[key] not in updatable_fields:
+            if key not in updatable_fields:
                 raise ValidationError({'detail': f'Not updatable field "{key}"'})
             else:
                 try:

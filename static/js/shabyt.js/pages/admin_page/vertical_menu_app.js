@@ -4,7 +4,7 @@ vertical_menu_app = Vue.createApp({
             current_section: "requests",
             previous_section: "",
             section_apps: {
-//                products: mounted_products_app,
+                products: mounted_products_app,
 //                services: mounted_services_app,
                 settings: mounted_settings_app,
                 requests: mounted_requests_app
@@ -20,7 +20,7 @@ vertical_menu_app = Vue.createApp({
                 document.getElementById(this.previous_section + "_section_btn").style.color = "black"
                 this.section_apps[this.previous_section].close()
             }
-            document.getElementById(this.current_section).style.display = "block"
+            document.getElementById(this.current_section).style.display = "flex"
             document.getElementById(this.current_section + "_section_btn").style.color = "#0070c9"
             this.previous_section = this.current_section
             this.section_apps[this.current_section].open()
@@ -56,3 +56,14 @@ vertical_menu_app = Vue.createApp({
 vertical_menu_app.config.compilerOptions.delimiters = ["${", "}"];
 mounted_vertical_menu_app = vertical_menu_app.mount("#sidebar")
 
+function sidebar_switch(section) {
+    var section = document.getElementById(section)
+
+    if (section.classList.contains("close_sidebar")) {
+        section.classList.remove("close_sidebar");
+        section.querySelectorAll(".hide_sidebar")[0].innerText = "<"
+    } else {
+        section.classList.add("close_sidebar");
+        section.querySelectorAll(".hide_sidebar")[0].innerText = ">"
+    }
+}

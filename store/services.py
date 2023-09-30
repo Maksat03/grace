@@ -1,3 +1,5 @@
+from typing import MutableMapping
+
 from django.db.models import Min, Max
 
 from base_object_presenter.services import BaseServicesPresenter
@@ -22,3 +24,14 @@ class StoreServicesPresenter(BaseServicesPresenter):
 
     def get_categories(self):
         return list(self.model_presenter.model.objects.values_list('category', flat=True).distinct())
+
+    def add_custom(self, add_request_schema: MutableMapping, files: MutableMapping) -> int:
+        serializer = self.serializers["object_add_form"](data=add_request_schema)
+        serializer.is_valid(raise_exception=True)
+        return serializer.save(files=files).id
+
+    def edit_custom(self, obj_id: int, edit_request_schema: MutableMapping, files: MutableMapping) -> None:
+        obj = self.model_presenter.model.objects.filter(id=obj_id).first()
+        serializer = self.serializers["object_edit_form"](obj, data=edit_request_schema)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(files=files)
