@@ -37,14 +37,14 @@
 		<div class="block">
 			<p @click="open_section('products')" id="products_section_btn">Товары</p>
 			<p @click="open_section('services')" id="services_section_btn">Услуги</p>
-			<p @click="open_section('requests')" id="requests_section_btn">Заявки</p>
+			<p @click="open_section('requests')" id="requests_section_btn">Заявки <span id="new_requests_count" class="new_requests_not_found"></span></p>
 		</div>
 
 		<hr>
 
 		<div class="block">
-			<p @click="open_section('settings')" id="settings_section_btn">Settings</p>
-			<a href="/logout/" style="color: red"><b>Logout</b></a>
+			<p @click="open_section('settings')" id="settings_section_btn">Настройки</p>
+			<a href="/logout/" style="color: red"><b>Выйти</b></a>
 		</div>
 	</div>
 
@@ -390,8 +390,8 @@
 			</div>
 
 			<ul class="block categories_list vertical_categories_list">
-				<li @click="open_category('store')" id="store_requests_category">Магазин</li>
-				<li @click="open_category('services')" id="services_requests_category">Услуги</li>
+				<li @click="open_category('store')" id="store_requests_category">Магазин<span id="new_requests_count_for_store" class="new_requests_not_found"></span></li>
+				<li @click="open_category('services')" id="services_requests_category">Услуги<span id="new_requests_count_for_services" class="new_requests_not_found"></span></li>
 			</ul>
 
 			<div class="table">

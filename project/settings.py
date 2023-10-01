@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'store',
     'request',
     'user',
+    'settings',
 
     'base_object_presenter',
     'debug_toolbar',

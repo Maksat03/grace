@@ -24,3 +24,10 @@ class RequestServicesPresenter(BaseServicesPresenter):
 
         data["answered_at"] = datetime_now()
         self.model_presenter.model.objects.filter(id=obj_id).update(**data)
+
+    def get_new_requests_count(self):
+        return {
+            "total": self.model_presenter.model.objects.filter(is_accepted=False).count(),
+            "count_for_store": self.model_presenter.model.objects.filter(is_accepted=False, category="store").count(),
+            "count_for_services": self.model_presenter.model.objects.filter(is_accepted=False, category="services").count(),
+        }

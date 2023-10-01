@@ -4,7 +4,7 @@ from .views import RequestViewsPresenter
 
 class RequestURLsPresenter(BaseURLsPresenter):
     views = RequestViewsPresenter()
-    urls = ["add", "get_many", "update_fields"]
+    urls = ["add", "get_many", "update_fields", "get_new_requests_count"]
 
 
 urlpatterns = RequestURLsPresenter().get_urlpatterns()

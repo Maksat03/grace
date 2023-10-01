@@ -1,7 +1,7 @@
 vertical_menu_app = Vue.createApp({
     data() {
         return {
-            current_section: "requests",
+            current_section: "products",
             previous_section: "",
             section_apps: {
                 products: mounted_products_app,
