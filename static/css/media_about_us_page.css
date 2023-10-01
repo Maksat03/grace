@@ -1,0 +1,50 @@
+@media(max-width: 1150px) {
+    .about_us_page_block .main {
+        gap: 30px;
+    }
+
+    .about_us_page_block .main .img {
+        min-width: 320px;
+    }
+
+    .about_us_page_block .specialists_list .specialist {
+        height: 250px;
+        width: 200px;
+    }
+}
+
+@media(max-width: 900px) {
+    .about_us_page_block .main {
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .about_us_page_block .main .img {
+        min-width: 100%;
+    }
+
+    .about_us_page_block .sub-header {
+        margin-top: 15px;
+    }
+
+    .about_us_page_block .specialists_list .specialist {
+        width: 47.6%;
+    }
+
+    .about_us_page_block .specialists_list {
+        gap: 25px;
+    }
+}
+
+@media(max-width: 630px) {
+    .about_us_page_block .specialists_list .specialist {
+        width: 47%;
+    }
+}
+
+@media(max-width: 500px) {
+    .about_us_page_block .specialists_list .specialist {
+        width: 46.4%;
+        height: 260px;
+    }
+}

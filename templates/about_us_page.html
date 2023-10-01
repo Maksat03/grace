@@ -1,0 +1,71 @@
+{% extends 'base_body.html' %}
+
+{% block body %}
+
+
+<span style="display: none" id="page_title">О нас</span>
+<button style="display: none" onclick="about_us_page_loaded()" id="page_loaded_js_function"></button>
+
+
+<div class="block about_us_page_block">
+    <div class="container main">
+        <div class="img" style="background-image: url(/static/imgs/about_us.png)"></div>
+        <div class="text">
+            <h1 class="custom_header" style="margin-top: 0">О нас</h1>
+            <p class="sub-header">Мы - команда профессионалов, преданная искусству сделать ваш бизнес выделяющимся среди остальных. Мы специализируемся на производстве рекламных материалов, объемных букв, баннеров и всего, что помогает сделать вашу рекламу незабываемой.</p>
+            <p class="sub-header">Наше творчество станет вашими крыльями. Мы разрабатываем уникальные дизайны, баннеры, вывески и объемные буквы, чтобы ваш бренд оставался в памяти клиентов.</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="block about_us_page_block">
+    <div class="container specialists">
+        <h1 class="header">Наши специалисты</h1>
+        <p class="sub-header">В мире рекламных материалов наши специалисты - это наша гордость и надежность. С минимальным стажем в 3 года они всегда готовы помочь вам в решении всех ваших потребностей в производстве рекламных материалов.</p>
+
+        <div class="specialists_list">
+            <div class="specialist">
+                <div class="specialist_img" style="background-image: url(/static/imgs/service_img.png)"></div>
+                <div class="info">
+                    <p>Name</p>
+                    <p>Опыт: 5 лет</p>
+                </div>
+            </div>
+            <div class="specialist">
+                <div class="specialist_img" style="background-image: url(/static/imgs/service_img.png)"></div>
+                <div class="info">
+                    <p>Name</p>
+                    <p>Опыт: 5 лет</p>
+                </div>
+            </div>
+            <div class="specialist">
+                <div class="specialist_img" style="background-image: url(/static/imgs/service_img.png)"></div>
+                <div class="info">
+                    <p>Name</p>
+                    <p>Опыт: 5 лет</p>
+                </div>
+            </div>
+            <div class="specialist">
+                <div class="specialist_img" style="background-image: url(/static/imgs/service_img.png)"></div>
+                <div class="info">
+                    <p>Name</p>
+                    <p>Опыт: 5 лет</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: right;">
+            <p class="sub-header" style="margin: 20px 0;">Ещё 6 сотрудников</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="about_us_page_clients">
+{% include 'clients.html' %}
+</div>
+{% include 'request_form.html' %}
+
+
+{% endblock %}
