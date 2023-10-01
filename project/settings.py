@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-uo0#^+b8nm-!mc!ta9jwa5na733g(vt4u3s(r^-j81yq3g7*n$'
 
 
-DEBUG = False
+DEBUG = True
 
 
 if DEBUG:
@@ -37,6 +37,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+#STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
 
