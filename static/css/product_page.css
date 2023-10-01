@@ -48,3 +48,27 @@
     opacity: 1;
     transform: translate(0, 0)
 }
+
+.product_info b, .product_info h1, .product_info h2, .product_info h3 {
+    font-family: Gilroy-Bold;
+}
+
+.product_info .more_info .text .characteristics_title {
+    margin-top: 25px;
+    margin-bottom: 0;
+}
+
+.product_info .more_info .text .description ul {
+    padding: 0;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.product_info .more_info .text .description ul li {
+    margin-bottom: 5px;
+}
+
+.product_info .more_info .text .description ul li strong {
+    font-family: 'Gilroy-Bold';
+    margin-right: 3px;
+}

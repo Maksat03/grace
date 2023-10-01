@@ -542,3 +542,19 @@ hr {
 .save {
     background
 }
+
+
+
+#product_form_description_editor ul {
+    padding: 0;
+    margin: 0;
+}
+
+#product_form_description_editor ul li {
+    margin-bottom: 5px;
+}
+
+#product_form_description_editor ul li strong {
+    font-family: 'Gilroy-Bold';
+    margin-right: 3px;
+}
