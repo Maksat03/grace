@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-uo0#^+b8nm-!mc!ta9jwa5na733g(vt4u3s(r^-j81yq3g7*n$'
 
 
-DEBUG = True
+DEBUG = False
 
 
 if DEBUG:
@@ -20,12 +20,12 @@ if DEBUG:
         'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG,
     }
 else:
-    DOMAIN = ""
-    BOT_TOKEN = ''
+    DOMAIN = "grace.com.kz"
+    BOT_TOKEN = '6698535460:AAECdvYZGj_di-IXUtl9Fll0rE1l_WAZlE8'
     TIME_DIFFERENCE_BETWEEN_SERVER = 6
 
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "192.168.46.119"]
+ALLOWED_HOSTS = ["localhost", "grace.com.kz"]
 WSGI_APPLICATION = 'project.wsgi.application'
 ROOT_URLCONF = 'project.urls'
 
