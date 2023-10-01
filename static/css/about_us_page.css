@@ -66,3 +66,11 @@
 .about_us_page_clients .container {
     margin-top: 0px;
 }
+
+.about_us_page_block .specialist_text_block {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    min-height: 20px;
+}
