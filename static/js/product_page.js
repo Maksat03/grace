@@ -4,7 +4,7 @@ function open_buy_form(product_id, product_name, product_image, product_price, p
     document.getElementById("buy-form-window").style.display = "block"
     document.getElementById("product_poster").style.backgroundImage = "url(" + product_image + ")"
     document.getElementById("product_code").innerText = "Код товара: " + product_code
-    document.getElementById("product_price").innerText = product_price
+    document.getElementById("product_price").innerText = product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
     document.getElementById("product_name").innerText = product_name
     document.getElementById("product_count").value = 1
     document.getElementById("buy-form-product_id").value = product_id
@@ -16,7 +16,7 @@ function close_buy_form(product_name, product_image) {
 }
 
 function set_product_sum() {
-    document.getElementById("product_sum").innerText = document.getElementById("product_count").value * Number(document.getElementById("product_price").innerText)
+    document.getElementById("product_sum").innerText = (Number(document.getElementById("product_count").value) * Number(parseInt(document.getElementById("product_price").innerText.replace(/\s+/g, ''), 10))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
 
 function buy_form_submit(event) {

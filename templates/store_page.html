@@ -1,4 +1,5 @@
 {% extends 'base_body.html' %}
+{% load humanize %}
 
 {% block body %}
 
@@ -38,8 +39,8 @@
                     <b>Цена</b>
 
                     <div class="prices">
-                        <p id="min_price_text" style="margin-right: auto">{{ selected_min_price }} тг</p>
-                        <p id="max_price_text">{{ selected_max_price }} тг</p>
+                        <p id="min_price_text" style="margin-right: auto">{{ selected_min_price|intcomma }} тг</p>
+                        <p id="max_price_text">{{ selected_max_price|intcomma }} тг</p>
                     </div>
 
                     <div class="price_range_slider">

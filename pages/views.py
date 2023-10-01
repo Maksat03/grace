@@ -76,3 +76,8 @@ def admin_page_view(request):
         return render(request, "admin_page.html")
 
     return redirect("/")
+
+
+@base_page_or_content
+def about_us_page_view(request):
+    return render(request, "about_us_page.html")

@@ -9,7 +9,7 @@
 <div class="block">
     <div class="container main_page_info">
         <div class="info">
-            <h1>Изготовливаем материалы для вашей рекламы.</h1>
+            <h1 class="custom_header">Изготовливаем материалы для вашей рекламы.</h1>
             <p class="sub-header">Мы изготавливаем объёмные буквы, стенды, световые коробы и многое другое с гарантией качества и сроков.</p>
             <div class="statistics">
                 <div>
@@ -44,14 +44,14 @@
 <div class="after_main_page_info">
     <div class="block">
         <div class="container services_info">
-            <h1>Наши услуги</h1>
+            <h1 class="header">Наши услуги</h1>
             {% include 'services.html' %}
         </div>
     </div>
 
     <div class="block">
         <div class="container products_info">
-            <h1>Наш магазин</h1>
+            <h1 class="header">Наш магазин</h1>
             <p>На нашем онлайн магазине вы можете приобрести орг. техники по самым вкусным ценам ))</p>
 
             {% include 'products.html' %}
@@ -62,23 +62,7 @@
         </div>
     </div>
 
-    <div class="block">
-        <div class="container partners_info">
-            <h1>Нам доверяют</h1>
-            
-            <div class="partners_list">
-                <div class="partner_card" style="background-image: url(/static/imgs/partner1.png)"></div>
-                <div class="partner_card" style="background-image: url(/static/imgs/partner3.png)"></div>
-                <div class="partner_card" style="background-image: url(/static/imgs/partner2.png)"></div>
-                <div class="partner_card" style="background-image: url(/static/imgs/partner4.png)"></div>
-
-                <div class="partner_card" style="background-image: url(/static/imgs/partner5.png)"></div>
-                <div class="partner_card" style="background-image: url(/static/imgs/partner6.png)"></div>
-                <div class="partner_card" style="background-image: url(/static/imgs/partner7.png)"></div>
-                <div class="partner_card" style="background-image: url(/static/imgs/partner8.png)"></div>
-            </div>
-        </div>
-    </div>
+    {% include 'clients.html' %}
 
     {% include 'request_form.html' %}
 </div>

@@ -1,0 +1,68 @@
+.about_us_page_block .main {
+    display: flex;
+    gap: 60px;
+}
+
+.about_us_page_block .main .img {
+    min-width: 330px;
+    height: 240px;
+    border-radius: 15px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.about_us_page_block .specialists {
+    margin-top: 0px;
+}
+
+.about_us_page_block .specialists .header {
+    margin-bottom: 15px;
+    margin-top: 0px;
+}
+
+.about_us_page_block .specialists .sub-header {
+    margin-top: 0;
+    margin-bottom: 40px;
+    line-height: 22px;
+}
+
+.about_us_page_block .specialists_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.about_us_page_block .specialists_list .specialist {
+    height: 300px;
+    width: 253px;
+    border-radius: 12px;
+    box-shadow: 0 0 6px 0px #c7c5c5;
+    display: flex;
+    flex-direction: column;
+}
+
+.about_us_page_block .specialists_list .specialist .specialist_img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.about_us_page_block .specialists_list .specialist .info {
+    padding: 17px 20px 27px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.about_us_page_block .specialists_list .specialist .info p {
+    margin: 0;
+}
+
+.about_us_page_clients .container {
+    margin-top: 0px;
+}
