@@ -1,9 +1,3 @@
-@media(max-width: 1150px) {
-    .services_info .services_page .services_list .service_card:nth-last-child(2), .services_info .services_page .services_list .service_card:last-child {
-        width: 266.6px;
-    }
-}
-
 @media(max-width: 900px) {
     .services_info .about_service {
         flex-direction: column;
@@ -18,19 +12,11 @@
         width: 100%;
         height: 350px;
     }
-
-    .services_info .services_page .services_list .service_card:nth-last-child(2), .services_info .services_page .services_list .service_card:last-child {
-        width: 183.3px;
-    }
 }
 
 @media(max-width: 630px) {
     .services_info .about_service .service_img {
         height: 300px;
-    }
-
-    .services_info .services_page .services_list .service_card:nth-last-child(2), .services_info .services_page .services_list .service_card:last-child {
-        width: 46.4%;
     }
 }
 

@@ -385,7 +385,22 @@ hr {
    display: block;
  }
 
- #category_form_window form, #product_form_window form{
+ #service_form_window {
+   background: rgba(102, 102, 102, 0.95);
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+   display: none;
+   z-index: 2001;
+ }
+
+ #service_form_window:target {
+   display: block;
+ }
+
+ #service_form_window form, #product_form_window form{
     background-color: white;
     width: 80vw;
     max-height: 80vh;
@@ -455,4 +470,37 @@ hr {
 
 .product_imgs_inputs b{
 	margin-bottom: 10px;
+}
+
+.car_input{
+  margin: 10px 0;
+  border: 1px solid rgba(0, 0, 0, .5);
+  padding: 10px 10px;
+  border-radius: 5px;
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+
+.car_input a, .uploaded_file_name {
+    line-break: anywhere;
+    overflow: hidden;
+    height: 18px;
+    padding-right: 5px;
+    display: inline-block;
+    width: 430px;
+    font-size: 15px;
+}
+
+.car_input input{
+  margin-right: 5px;
+}
+
+.car_input button{
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.car_input img{
+  height: 20px;
 }

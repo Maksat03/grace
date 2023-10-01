@@ -41,8 +41,3 @@
 
     box-shadow: 0 0 5px 1px #c1bfbf;
 }
-
-.services_info .services_page .services_list .service_card:nth-last-child(2), .services_info .services_page .services_list .service_card:last-child {
-    width: 350px;
-    margin: 0;
-}

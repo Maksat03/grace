@@ -25,7 +25,7 @@ else:
     TIME_DIFFERENCE_BETWEEN_SERVER = 6
 
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "192.168.46.119"]
 WSGI_APPLICATION = 'project.wsgi.application'
 ROOT_URLCONF = 'project.urls'
 

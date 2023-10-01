@@ -51,7 +51,7 @@
         padding: 12px 20px 15px 20px;
     }
 
-    .services_info .services_list .service_card:nth-last-child(2), .services_info .services_list .service_card:last-child {
+    .services_info .services_list .service_card.special_service_card {
         width: 410px;
     }
 
@@ -65,8 +65,8 @@
     }
 
     .products_info .products_list .product_card .product_img {
-        height: 150px;
-        width: 150px;
+        min-height: 150px;
+        min-width: 150px;
     }
 
     .products_info .products_list .product_card .text {
@@ -177,7 +177,7 @@
         font-size: 14px;
     }
 
-    .services_info .services_list .service_card:nth-last-child(2), .services_info .services_list .service_card:last-child {
+    .services_info .services_list .service_card.special_service_card {
         width: 287.5px;
     }
 
@@ -186,7 +186,7 @@
     }
 
     .products_info .products_list .product_card, .products_info .products_list .product_card .product_img {
-        width: 175.3px;
+        min-width: 175.3px;
     }
 
     .products_info .products_list .product_card:nth-last-child(2), .products_info .products_list .product_card:last-child {
@@ -235,6 +235,20 @@
     .main_page_leave_request_container {
         transform: translateY(60%);
     }
+
+    .services_info .services_list {
+        gap: 20px;
+    }
+
+    .services_info .services_list .service_card {
+        width: 186.3px;
+        border-radius: 14px;
+    }
+
+    .services_info .services_list .service_card .service_img {
+        border-top-left-radius: 14px;
+        border-top-right-radius: 14px;
+    }
 }
 
 
@@ -247,11 +261,11 @@
         width: 48.4%;
     }
 
-    .services_info .services_list .service_card, .services_info .services_list .service_card:nth-last-child(2) {
+    .services_info .services_list .service_card, .services_info .services_list .service_card.special_service_card {
         width: 47.3%;
     }
 
-    .services_info .services_list .service_card:last-child {
+    .services_info .services_list .service_card.special_service_card.very_special_service_card {
         width: 100%;
     }
 
@@ -263,8 +277,10 @@
         height: 150px;
     }
 
-    .services_info .services_list .service_card, .services_info .services_list .service_card:nth-last-child(2) {
-        width: 46.4%;
+    .services_info .services_list .service_card, .services_info .services_list .service_card.special_service_card:first-child, .services_info .services_list .service_card.special_service_card.one_row_service_card {
+        width: 47.9%;
+        box-shadow: 0 0 7px 0px #cfcfcf;
+        margin-bottom: 0;
     }
 
     .services_info .services_list .service_card .text h3 {
@@ -280,7 +296,11 @@
     }
 
     .products_info .products_list .product_card, .products_info .products_list .product_card .product_img {
-        width: 142px;
+        min-width: 224.5px;
+    }
+
+    .products_info .products_list .product_card:nth-last-child(2) {
+        display: flex;
     }
 
     .products_info .products_list .product_card {
@@ -355,6 +375,10 @@
     .main_page_leave_request_container {
         transform: translateY(50%);
     }
+
+    .products_info .products_list .product_card .text .pre_product_name_block {
+        min-height: 38px;
+    }
 }
 
 
@@ -388,11 +412,7 @@
     }
 
     .products_info .products_list .product_card, .products_info .products_list .product_card .product_img {
-        width: 159.5px;
-    }
-
-    .products_info .products_list .product_card:nth-last-child(2) {
-        display: block;
+        min-width: 159.5px;
     }
 
     .partners_info .partners_list .partner_card {
@@ -425,5 +445,21 @@
 
     .main_page_leave_request_container {
         transform: translateY(40%);
+    }
+
+    .services_info .services_list .service_card, .services_info .services_list .service_card.special_service_card, .services_info .services_list .service_card.special_service_card.one_row_service_card {
+        width: 47.1%;
+        box-shadow: 0 0 7px 0px #cfcfcf;
+        margin-bottom: 0;
+        border-radius: 10px;
+    }
+
+    .services_info .services_list .service_card .service_img {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .main_page_info .info .statistics div {
+        border-radius: 12px;
     }
 }

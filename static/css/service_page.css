@@ -155,4 +155,10 @@
   to {transform:scale(1)}
 }
 
-
+.pre_service_name_block {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    min-height: 25px;
+}

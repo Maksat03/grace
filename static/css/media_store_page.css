@@ -15,7 +15,7 @@
     }
 
     .store_page .products_info .products_list .product_card:nth-last-child(2), .store_page .products_info .products_list .product_card:last-child {
-        display: block;
+        display: flex;
     }
 
     .store_page .products_info .products_list .product_card, .store_page .products_info .products_list .product_card .product_img {

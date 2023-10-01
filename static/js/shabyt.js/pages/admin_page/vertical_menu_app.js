@@ -5,7 +5,7 @@ vertical_menu_app = Vue.createApp({
             previous_section: "",
             section_apps: {
                 products: mounted_products_app,
-//                services: mounted_services_app,
+                services: mounted_services_app,
                 settings: mounted_settings_app,
                 requests: mounted_requests_app
             }

@@ -98,8 +98,10 @@ function get_products() {
                                 <div class="pre_product_name_block">
                                     <h4>${ product.name }</h4>
                                 </div>
-                                <div class="after_product_name_block">
+                                <div class="pre_product_code_block">
                                     <p>Код товара: ${ product.code }</p>
+                                </div>
+                                <div class="after_product_name_block">
                                     <h3>${ product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') } тг</h3>
                                     <button onclick="open_buy_form(${ product.id }, '${ product.name }', '${ product.poster }', '${ product.price }', '${ product.code }')" onmouseover="disable_anchors()" onmouseout="enable_anchors()"><span>купить</span></button>
                                 </div>

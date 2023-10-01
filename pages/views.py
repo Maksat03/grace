@@ -9,7 +9,7 @@ from store.presenter import store_services_presenter
 @base_page_or_content
 def main_page_view(request):
     services = service_services_presenter.get_many({"limit": 5, "filtration": {"parent_service": None}})
-    products = store_services_presenter.get_many({"limit": 5})
+    products = store_services_presenter.get_many({"limit": 5, "ordering": ["-id"]})
     return render(request, "main_page.html", {"services": services.data, "products": products.data})
 
 

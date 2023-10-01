@@ -180,6 +180,103 @@
 		</div>
 	</div>
 
+	<div class="section" id="services" style="display: none">
+		<div class="section_content">
+			<div class="section_top">
+				<div class="section_title">
+					<h2>Услуги</h2>
+					<button @click="open_service_form()" class="plus_btn"><span>+</span></button>
+				</div>
+			</div>
+
+			<div class="table">
+				<div class="row column_names">
+					<div class="column">
+						<div class="column-img">Фото</div>
+					</div>
+					<div class="column">Названия</div>
+					<div class="column">Категория</div>
+					<div class="column"></div>
+				</div>
+
+				<div class="rows">
+					<div class="row" v-for="service in services">
+						<div class="column">
+							<div class="column-img" :style="'background-image: url(' + service.poster + ')'"></div>
+						</div>
+						<div class="column">${ service.name }</div>
+						<div class="column">${ service.parent_service_name }</div>
+						<div class="column"><button @click="open_service_form(service)" class="accept_btn">Изменить</button></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="service_form_window">
+			<form id="service_form" @submit.prevent="service_form_submit()">
+				{% csrf_token %}
+				<div class="add_product_block">
+					<h2 style="margin-top: 0" v-if="service_form.id">Редактировать услугу</h2>
+					<h2 style="margin-top: 0" v-else>Добавить услугу</h2>
+
+					<div class="add_product block_css">
+						<b>Родительская услуга:</b>
+
+						<select v-model="service_form['parent_service_id']" required>
+							<option value="null" selected>Нет</option>
+							<option v-for="parent_service in categories" :value="parent_service.id">${ parent_service.name }</option>
+						</select>
+					</div>
+					<div class="add_product block_css">
+						<b>Название:</b>
+						<input type="text" placeholder="Название" required v-model="service_form['name']">
+					</div>
+					<div class="add_product product_imgs_inputs">
+						<b>Обложка: </b>
+						<div style="margin-bottom: 5px" v-if="!service_poster_is_uploaded_to_input()">
+							<a class="uploaded_file_name" style="margin-right: 1px; width: fit-content; cursor: initial">Текущий:</a>
+							<a :href="service_form.poster" v-cloak class="uploaded_file_name" v-if="service_form.poster">${ service_form.poster.replace('/media/posters/', '') }</a>
+						</div>
+						<input id="service_poster_file_input" type="file" @change="handle_service_poster_upload($event)" :required="service_form.poster == ''" class="service_form_image_input">
+					</div>
+					<div class="add_product block_css">
+						<b>О услуге</b>
+						<div id="service_form_description_editor"></div>
+					</div>
+
+					<div class="add_product product_imgs_inputs">
+						<b>Фотографии услуги:</b>
+
+						<div v-for="(image, key) in service_form['images']" :key="key" class="car_input"> <!-- draggable="true" -->
+							<span style="margin-right: 6px">Текущий: </span>
+							<a v-if="!image_is_uploaded_to_input(image) && image.image != ''" :href="image.image" v-cloak>${ image.image.replace('/media/service_images/', '') }</a>
+							<span class="uploaded_file_name" v-else>${ image.image }</span>
+							<input type="file" :id="'service_image_upload_input_' + key" @change="handle_file_upload(image, $event)" :required="image.image == ''" class="service_form_image_input" style="display: none;">
+							<button type="button" class="open_file_select_window_btn" style="margin-right: 15px" @click="open_file_select_window(key)">Загрузить фото...</button>
+							<button @click="delete_image(image)" type="button"><img src="{% static 'imgs/trash.png' %}"></button>
+						</div>
+
+						<span style="color: #008EDE; cursor: pointer" @click="add_image()">Добавить фото</span>
+					</div>
+
+					<div class="add_product btns">
+						<div v-if="service_form.id">
+							<button class="add_btn" type="submit">Изменить</button>
+							<button class="delete_btn" type="button" @click="delete_service()">Удалить</button>
+						</div>
+						<div v-else>
+							<button class="add_btn" type="submit">Добавить</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="close">
+					<a onclick='document.getElementById("service_form_window").style.display = "none"'><img src="{% static 'imgs/shabyt.imgs/cross.png' %}" alt=""></a>
+				</div>
+			</form>
+		</div>
+	</div>
+
 	<div class="section" id="products" style="display: none">
 		<div class="section_content">
 			<div class="section_top">
@@ -213,7 +310,7 @@
 						</div>
 						<div class="column">${ product.name }</div>
 						<div class="column">${ product.code }</div>
-						<div class="column">${ product.price }</div>
+						<div class="column">${ product.price } тг</div>
 						<div class="column"><button @click="open_product_form(product)" class="accept_btn">Изменить</button></div>
 					</div>
 				</div>
@@ -255,7 +352,7 @@
 							<a class="uploaded_file_name" style="margin-right: 1px; width: fit-content; cursor: initial">Текущий:</a>
 							<a :href="product_form.poster" v-cloak class="uploaded_file_name" v-if="product_form.poster">${ product_form.poster.replace('/media/posters/', '') }</a>
 						</div>
-						<input id="poster_file_input" type="file" @change="handle_product_poster_upload($event)" :required="product_form.poster == ''" class="product_form_image_input">
+						<input id="poster_file_input" type="file" @change="handle_product_poster_upload($event)" :required="product_form.poster == ''" class="service_form_image_input">
 					</div>
 					<div class="add_product block_css">
 						<b>Цена:</b>
@@ -372,6 +469,7 @@
 		<script src="{% static 'js/shabyt.js/services/product_services.js' %}"></script>
 		<script src="{% static 'js/shabyt.js/services/site_settings_services.js' %}"></script>
 
+		<script src="{% static 'js/shabyt.js/pages/admin_page/services_app.js' %}"></script>
 		<script src="{% static 'js/shabyt.js/pages/admin_page/products_app.js' %}"></script>
 		<script src="{% static 'js/shabyt.js/pages/admin_page/requests_app.js' %}"></script>
 		<script src="{% static 'js/shabyt.js/pages/admin_page/settings_app.js' %}"></script>

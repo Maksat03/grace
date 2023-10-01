@@ -197,6 +197,8 @@ products_app = Vue.createApp({
                     this.open_section()
 
                     this.clear_form()
+                }).catch((error) => {
+                    this.product_form["on_submit"] = false
                 })
             }
         },

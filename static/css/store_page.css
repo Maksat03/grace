@@ -26,7 +26,8 @@
 }
 
 .store_page .products_info details.open_details {
-    height: 525px;
+    height: fit-content;
+    max-height: 525px;
 }
 
 .store_page .products_info details.open_details summary img {
@@ -67,6 +68,10 @@
     flex-direction: column;
     gap: 10px;
     position: relative;
+}
+
+.store_page .products_info details .brands {
+    margin-bottom: 0;
 }
 
 .store_page .products_info details select {
@@ -171,8 +176,8 @@
 .store_page .products_info details .brands .brands_checkbox {
     display: flex;
     flex-direction: column;
-    overflow: auto;
-    height: 160px;
+    overflow: scroll;
+    max-height: 160px;
 }
 
 .store_page .products_info details .brands .brands_checkbox label {
@@ -186,14 +191,6 @@
 
 .store_page .products_info details .brands .brands_checkbox span {
     display: flex;
-}
-
-
-/* Apply these styles to the element where you want the scrollbars to always be visible */
-.store_page .products_info details .brands .brands_checkbox {
-  overflow: scroll; /* Show both horizontal and vertical scrollbars */
-  scrollbar-width: thin; /* Adjust the width of the scrollbar */
-  scrollbar-color: darkgray lightgray; /* Customize the scrollbar colors */
 }
 
 /* Optionally, you can style the scrollbar further */

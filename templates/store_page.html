@@ -38,14 +38,14 @@
                     <b>Цена</b>
 
                     <div class="prices">
-                        <p id="min_price_text" style="margin-right: auto">{{ selected_min_price }}</p>
-                        <p id="max_price_text">{{ selected_max_price }}</p>
+                        <p id="min_price_text" style="margin-right: auto">{{ selected_min_price }} тг</p>
+                        <p id="max_price_text">{{ selected_max_price }} тг</p>
                     </div>
 
                     <div class="price_range_slider">
                         <hr>
-                        <input id="min_price_input" step="1000" type="range" min="{{ min_price }}" max="{{ max_price }}" value="{{ selected_min_price }}" oninput="slide_min_price()" onchange="get_products()">
-                        <input id="max_price_input" step="1000" type="range" min="{{ min_price }}" max="{{ max_price }}" value="{{ selected_max_price }}" oninput="slide_max_price()" onchange="get_products()">
+                        <input id="min_price_input" type="range" min="{{ min_price }}" max="{{ max_price }}" value="{{ selected_min_price }}" oninput="slide_min_price()" onchange="get_products()">
+                        <input id="max_price_input" type="range" min="{{ min_price }}" max="{{ max_price }}" value="{{ selected_max_price }}" oninput="slide_max_price()" onchange="get_products()">
                     </div>
                 </div>
 
