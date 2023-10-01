@@ -123,7 +123,7 @@
 						<div class="column">Name</div>
 						<div class="column">Name</div>
 						<div class="column">
-							<input type="checkbox">
+<!--							<input type="checkbox">-->
 						</div>
 						<div class="column">Name</div>
 						<div class="column">Name</div>
@@ -138,7 +138,7 @@
 						<div class="column">Name</div>
 						<div class="column">Name</div>
 						<div class="column">
-							<input type="checkbox">
+<!--							<input type="checkbox">-->
 						</div>
 						<div class="column">Name</div>
 						<div class="column">Name</div>
@@ -153,7 +153,7 @@
 						<div class="column">Name</div>
 						<div class="column">Name</div>
 						<div class="column">
-							<input type="checkbox">
+<!--							<input type="checkbox">-->
 						</div>
 						<div class="column">Name</div>
 						<div class="column">Name</div>
@@ -168,7 +168,7 @@
 						<div class="column">Name</div>
 						<div class="column">Name</div>
 						<div class="column">
-							<input type="checkbox">
+<!--							<input type="checkbox">-->
 						</div>
 						<div class="column">Name</div>
 						<div class="column">Name</div>
@@ -222,14 +222,14 @@
 					<div class="add_product block_css">
 						<b>Родительская услуга:</b>
 
-						<select v-model="service_form['parent_service_id']" required>
+						<select v-model="service_form['parent_service_id']" required name="parent_service_id">
 							<option value="null" selected>Нет</option>
 							<option v-for="parent_service in categories" :value="parent_service.id">${ parent_service.name }</option>
 						</select>
 					</div>
 					<div class="add_product block_css">
 						<b>Название:</b>
-						<input type="text" placeholder="Название" required v-model="service_form['name']">
+						<input type="text" placeholder="Название" required v-model="service_form['name']" name="service_name">
 					</div>
 					<div class="add_product product_imgs_inputs">
 						<b>Обложка: </b>
@@ -237,7 +237,7 @@
 							<a class="uploaded_file_name" style="margin-right: 1px; width: fit-content; cursor: initial">Текущий:</a>
 							<a :href="service_form.poster" v-cloak class="uploaded_file_name" v-if="service_form.poster">${ service_form.poster.replace('/media/posters/', '') }</a>
 						</div>
-						<input id="service_poster_file_input" type="file" @change="handle_service_poster_upload($event)" :required="service_form.poster == ''" class="service_form_image_input">
+						<input id="service_poster_file_input" type="file" @change="handle_service_poster_upload($event)" :required="service_form.poster == ''" class="service_form_image_input" name="service_poster">
 					</div>
 					<div class="add_product block_css">
 						<b>О услуге</b>
@@ -251,7 +251,7 @@
 							<span style="margin-right: 6px">Текущий: </span>
 							<a v-if="!image_is_uploaded_to_input(image) && image.image != ''" :href="image.image" v-cloak>${ image.image.replace('/media/service_images/', '') }</a>
 							<span class="uploaded_file_name" v-else>${ image.image }</span>
-							<input type="file" :id="'service_image_upload_input_' + key" @change="handle_file_upload(image, $event)" :required="image.image == ''" class="service_form_image_input" style="display: none;">
+							<input name="image" type="file" :id="'service_image_upload_input_' + key" @change="handle_file_upload(image, $event)" :required="image.image == ''" class="service_form_image_input" style="display: none;">
 							<button type="button" class="open_file_select_window_btn" style="margin-right: 15px" @click="open_file_select_window(key)">Загрузить фото...</button>
 							<button @click="delete_image(image)" type="button"><img src="{% static 'imgs/trash.png' %}"></button>
 						</div>
@@ -326,22 +326,22 @@
 
 					<div class="add_product block_css">
 						<b>Категория:</b>
-						<input type="text" required v-model="product_form.category" list="categories_list" @change="get_brands(product_form.category)">
+						<input name="product_category" type="text" required v-model="product_form.category" list="categories_list" @change="get_brands(product_form.category)">
 						<datalist id="categories_list">
 							<option v-for="category in categories" :value="category">
 						</datalist>
 					</div>
 					<div class="add_product block_css">
 						<b>Название:</b>
-						<input type="text" placeholder="Название" required v-model="product_form['name']">
+						<input name="product_name" type="text" placeholder="Название" required v-model="product_form['name']">
 					</div>
 					<div class="add_product block_css">
 						<b>Код товара:</b>
-						<input type="text" placeholder="Код товара" required v-model="product_form['code']">
+						<input name="product_code" type="text" placeholder="Код товара" required v-model="product_form['code']">
 					</div>
 					<div class="add_product block_css">
 						<b>Бренд:</b>
-						<input type="text" required v-model="product_form.brand" list="brands_list">
+						<input name="product_brand" type="text" required v-model="product_form.brand" list="brands_list">
 						<datalist id="brands_list">
 							<option v-for="brand in brands" :value="brand">
 						</datalist>
@@ -352,11 +352,11 @@
 							<a class="uploaded_file_name" style="margin-right: 1px; width: fit-content; cursor: initial">Текущий:</a>
 							<a :href="product_form.poster" v-cloak class="uploaded_file_name" v-if="product_form.poster">${ product_form.poster.replace('/media/posters/', '') }</a>
 						</div>
-						<input id="poster_file_input" type="file" @change="handle_product_poster_upload($event)" :required="product_form.poster == ''" class="service_form_image_input">
+						<input name="product_poster" id="poster_file_input" type="file" @change="handle_product_poster_upload($event)" :required="product_form.poster == ''" class="service_form_image_input">
 					</div>
 					<div class="add_product block_css">
 						<b>Цена:</b>
-						<input type="number" placeholder="Цена" required v-model="product_form['price']">
+						<input name="product_price" type="number" placeholder="Цена" required v-model="product_form['price']">
 					</div>
 					<div class="add_product block_css">
 						<b>О товаре</b>
@@ -424,9 +424,82 @@
 	</div>
 
 	<div style="display: none; margin-top: 30px; margin-left: 30px;" class="section" id="settings">
-		<div v-if="!settings_section_is_opened" class="block">
-			<a href="#change_password_window" style="font-size: 20px; text-decoration: none; color: #0070c9;">Изменить пароль</a>
+		<div v-if="!settings_section_is_opened" class="block menu">
+			<p onclick="window.location.hash = '#change_password_window'">Изменить пароль</p>
+			<p @click="open_tg_ids_form()">Telegram IDs</p>
+			<p @click="open_information_on_site_form()">Информация на сайте</p>
 		</div>
+
+		<div class="contacts_block" v-if="tg_ids_form_is_opened">
+			<div class="go_back">
+				<a @click="tg_ids_form_is_opened = false">Назад</a>
+			</div>
+
+			<form @submit.prevent="save_tg_ids()">
+				{% csrf_token %}
+				<div class="contacts">
+					<textarea v-model="tg_ids_form" cols="30" rows="10"></textarea>
+				</div>
+
+				<div class="edit_btns">
+					<button type="submit" class="accept_btn" style="margin-top: 10px;" :disabled="!tg_ids_form_is_opened">Сохранить</button>
+				</div>
+			</form>
+		</div>
+
+		<div class="contacts_block" v-if="information_on_site_form_is_opened" id="contacts_settings">
+			<div class="go_back">
+				<a @click="information_on_site_form_is_opened = false">Назад</a>
+			</div>
+
+			<form @submit.prevent="save_information_on_site()" class="carousel_s_block">
+				{% csrf_token %}
+
+				<div class="contacts">
+					<div class="contact">
+						<h3 style="margin-bottom: 5px; margin-top: 0;">Адрес</h3>
+						<input type="text" v-model="information_on_site_form['address']" placeholder="Адрес">
+					</div>
+					<div class="contact">
+						<h3 style="margin-bottom: 5px;">Instagram</h3>
+						<input type="text" v-model="information_on_site_form.contacts['insta']" placeholder="Instagram">
+					</div>
+					<div class="contact">
+						<h3 style="margin-bottom: 5px;">Email</h3>
+						<input type="text" v-model="information_on_site_form.contacts['email']" placeholder="Email">
+					</div>
+					<div class="contact">
+						<h3 style="margin-bottom: 5px;">Номер телефона</h3>
+						<input type="text" v-model="information_on_site_form.contacts['phone_number']" placeholder="Номер телефона">
+					</div>
+					<div class="contact">
+						<h3 style="margin-bottom: 5px;">Ceil1</h3>
+						<input type="text" v-model="information_on_site_form.statistics['ceil1']" placeholder="Ceil1">
+					</div>
+					<div class="contact">
+						<h3 style="margin-bottom: 5px;">Ceil2</h3>
+						<input type="text" v-model="information_on_site_form.statistics['ceil2']" placeholder="Ceil2">
+					</div>
+					<div class="contact">
+						<h3 style="margin-bottom: 5px;">Ceil3</h3>
+						<input type="text" v-model="information_on_site_form.statistics['ceil3']" placeholder="Ceil3">
+					</div>
+					<div class="contact">
+						<h3 style="margin-bottom: 5px;">Ceil4</h3>
+						<input type="text" v-model="information_on_site_form.statistics['ceil4']" placeholder="Ceil4">
+					</div>
+					<div class="contact">
+						<h3 style="margin-bottom: 5px;">Ceil5</h3>
+						<input type="text" v-model="information_on_site_form.statistics['ceil5']" placeholder="Ceil5">
+					</div>
+				</div>
+
+				<div class="edit_btns">
+					<button type="submit" class="accept_btn" style="margin-top: 10px;" :disabled="!information_on_site_form_is_opened">Сохранить</button>
+				</div>
+			</form>
+		</div>
+
 	</div>
 
 	<div id="change_password_window">
@@ -437,17 +510,17 @@
 
 				<div class="reg_inputs">
 					<span>Текущий пароль</span>
-					<input type="password" v-model="ChangePasswordRequestSchema['old_password']" required>
+					<input type="password" v-model="ChangePasswordRequestSchema['old_password']" required name="old_password">
 				</div>
 
 				<div class="reg_inputs">
 					<span>Новый пароль</span>
-					<input type="password" v-model="ChangePasswordRequestSchema['new_password1']" required>
+					<input type="password" v-model="ChangePasswordRequestSchema['new_password1']" required name="new_password1">
 				</div>
 
 				<div class="reg_inputs">
 					<span>Подтверждение пароля</span>
-					<input type="password" v-model="ChangePasswordRequestSchema['new_password2']" required>
+					<input type="password" v-model="ChangePasswordRequestSchema['new_password2']" required name="new_password2">
 				</div>
 
 				<ul class="reg_text" style="padding-left: 20px; display: block">

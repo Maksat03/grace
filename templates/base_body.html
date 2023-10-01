@@ -1,3 +1,6 @@
+{% load information_on_site_tags %}
+{% get_information_on_site as information_on_site %}
+
 <div class="main_content">
     <div class="block navbar-block">
         <div class="container navbar-container">
@@ -40,13 +43,14 @@
     <div class="container footer-container">
         <div class="logo-img">
             <img src="/static/imgs/logo-img.png" alt="">
+            <h3 style="margin-top: 20px; width: 240px; font-size: 20px;">{{ information_on_site.address }}</h3>
         </div>
 
         <div class="contacts">
             <h2>Контакты</h2>
-            <p>insta: maksat_kantai</p>
-            <p>+77779185334</p>
-            <p>kantaimaksat03@gmail.com</p>
+            <p>insta: {{ information_on_site.contacts.insta }}</p>
+            <p>{{ information_on_site.contacts.email }}</p>
+            <p>{{ information_on_site.contacts.phone_number }}</p>
         </div>
 
         <div class="navigation">

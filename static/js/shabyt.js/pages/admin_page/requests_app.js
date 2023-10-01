@@ -91,7 +91,8 @@ requests_app = Vue.createApp({
         }
     },
     mounted() {
-        setInterval(this.get_new_requests_count, 1000);
+        this.get_new_requests_count()
+        setInterval(this.get_new_requests_count, 30000);
     }
 })
 

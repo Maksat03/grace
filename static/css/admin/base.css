@@ -526,3 +526,19 @@ hr {
 .new_requests_not_found {
     opacity: 0;
 }
+
+#settings .menu {
+    font-size: 20px;
+    text-decoration: none;
+    color: #0070c9;
+}
+
+.go_back {
+    margin-bottom: 10px;
+    text-decoration: underline;
+    color: #0070c9;
+}
+
+.save {
+    background
+}

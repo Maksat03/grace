@@ -44,7 +44,7 @@ class RequestModelPresenter(BaseModelPresenter):
     def send_tg_messages(notification_text):
         tg_ids = []
 
-        with open("telegram bot/tg_ids.txt") as file:
+        with open("../settings/tg_ids.txt") as file:
             for line in file:
                 tg_ids.append(line.strip())
 

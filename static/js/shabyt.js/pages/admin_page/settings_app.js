@@ -3,7 +3,7 @@ settings_app = Vue.createApp({
         return {
             carousel_images_form_is_opened: false,
             delivery_price_setting_form_is_opened: false,
-            languages_form_is_opened: false,
+            information_on_site_form_is_opened: false,
             tg_ids_form_is_opened: false,
             guarantee_form_is_opened: false,
             guarantee_quill: null,
@@ -13,43 +13,19 @@ settings_app = Vue.createApp({
             uploaded_images: {},
             delivery_price: 0,
             tg_ids_form: "",
-            languages_form: {
-                kazakh: {
-                    "label": "ҚАЗАҚ ТІЛІ",
-                    "course_duration": "",
-                    "lessons_for_week": "",
-                    "poster": "/static/imgs/language1.png"
+            information_on_site_form: {
+                address: "",
+                contacts: {
+                    insta: "",
+                    email: "",
+                    phone_number: ""
                 },
-                english: {
-                    "label": "АҒЫЛШЫН ТІЛІ",
-                    "course_duration": "",
-                    "lessons_for_week": "",
-                    "poster": "/static/imgs/language2.png"
-                },
-                turk: {
-                    "label": "ТҮРІК ТІЛІ",
-                    "course_duration": "",
-                    "lessons_for_week": "",
-                    "poster": "/static/imgs/language3.png"
-                },
-                china: {
-                    "label": "ҚЫТАЙ ТІЛІ",
-                    "course_duration": "",
-                    "lessons_for_week": "",
-                    "poster": "/static/imgs/language4.png"
-                },
-                korean: {
-                    "label": "КОРЕЙ ТІЛІ",
-                    "course_duration": "",
-                    "lessons_for_week": "",
-                    "poster": "/static/imgs/language5.png"
-                },
-                french: {
-                    "label": "ФРАНЦУЗ ТІЛІ",
-                    "course_duration": "",
-                    "lessons_for_week": "",
-                    "poster": "/static/imgs/language6.png"
-                },
+                statistics: {
+                    ceil1: "",
+                    ceil2: "",
+                    ceil3: "",
+                    ceil4: ""
+                }
             },
         }
     },
@@ -98,24 +74,22 @@ settings_app = Vue.createApp({
                 this.delivery_price = data["delivery_price"]
             })
         },
-        open_languages_form() {
-            this.languages_form_is_opened = true
+        open_information_on_site_form() {
+            this.information_on_site_form_is_opened = true
 
-            SiteSettingsServices.get_languages().then((data) => {
-                for (item in data) {
-                    this.languages_form[item]["course_duration"] = data[item]["course_duration"]
-                    this.languages_form[item]["lessons_for_week"] = data[item]["lessons_for_week"]
-                }
+            axios("/api/settings/information_on_site/").then((response) => {
+                this.information_on_site_form = response.data
             })
         },
         open_tg_ids_form() {
             this.tg_ids_form_is_opened = true
 
-            SiteSettingsServices.get_tg_ids().then((data) => {
+            axios("/api/settings/tg_ids").then((response) => {
+                var data = response.data
                 var tg_ids = ""
 
                 for (var i = 0; i < data.length; i++) {
-                    tg_ids += `${ data[i] }\n`
+                    tg_ids += `${ data[i] }`
                 }
 
                 this.tg_ids_form = tg_ids
@@ -133,12 +107,31 @@ settings_app = Vue.createApp({
             SiteSettingsServices.save_delivery_price(this.delivery_price)
             this.delivery_price_setting_form_is_opened = false
         },
-        save_languages() {
-            SiteSettingsServices.save_languages({languages: this.languages_form})
-            this.languages_form_is_opened = false
+        save_information_on_site() {
+            axios.post("/api/settings/information_on_site/", {information_on_site: this.information_on_site_form},
+                {
+                    headers: {
+                        "X-CSRFToken": $cookies.get("csrftoken"),
+                    }
+                }
+            )
+            this.information_on_site_form_is_opened = false
         },
         save_tg_ids() {
-            SiteSettingsServices.save_tg_ids({tg_ids: this.tg_ids_form})
+            var tg_ids = this.tg_ids_form.split("\n")
+            var result_tg_ids = []
+
+            for (var i = 0; i < tg_ids.length; i++) {
+                if (tg_ids[i]) {
+                    result_tg_ids.push(tg_ids[i])
+                }
+            }
+
+            axios.post("/api/settings/tg_ids/", {"tg_ids": result_tg_ids}, {
+                headers: {
+                    "X-CSRFToken": $cookies.get("csrftoken"),
+                }
+            })
             this.tg_ids_form_is_opened = false
         },
         handle_file_upload(image, event) {
@@ -163,7 +156,7 @@ settings_app = Vue.createApp({
     },
     computed: {
         settings_section_is_opened() {
-            return (this.carousel_images_form_is_opened || this.delivery_price_setting_form_is_opened || this.languages_form_is_opened || this.tg_ids_form_is_opened || this.about_us_form_is_opened || this.guarantee_form_is_opened)
+            return (this.carousel_images_form_is_opened || this.delivery_price_setting_form_is_opened || this.information_on_site_form_is_opened || this.tg_ids_form_is_opened || this.about_us_form_is_opened || this.guarantee_form_is_opened)
         }
     }
 })

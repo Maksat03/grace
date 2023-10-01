@@ -12,7 +12,7 @@ def save_tg_id(tg_id):
     tg_ids = []
 
     try:
-        with open('tg_ids.txt', 'r') as file:
+        with open('../../settings/tg_ids.txt', 'r') as file:
             for line in file:
                 tg_ids.append(line.strip())
     except Exception as e:
@@ -20,19 +20,19 @@ def save_tg_id(tg_id):
 
     if not (str(tg_id) in tg_ids):
         tg_ids.append(str(tg_id))
-        with open('tg_ids.txt', 'w') as file:
+        with open('../../settings/tg_ids.txt', 'w') as file:
             file.write("\n".join(tg_ids))
 
 
 @dp.message_handler(commands=['start'])
 async def welcome(msg: Message):
-    await msg.answer("Теперь я буду уведомлять вас о новых заказах на сайте.")
+    await msg.answer(msg.chat.id)
     save_tg_id(msg.chat.id)
 
 
 @dp.message_handler(content_types=ContentType.TEXT)
 async def get_message(msg: Message):
-    await msg.answer("Теперь я буду уведомлять вас о новых заказах на сайте.")
+    await msg.answer(msg.chat.id)
     save_tg_id(msg.chat.id)
 
 
