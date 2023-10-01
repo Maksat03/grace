@@ -33,7 +33,11 @@ def services_page_view(request):
 def store_page_view(request):
     categories = store_services_presenter.get_categories()
 
-    category = request.GET.get("category", categories[0])
+    if len(categories) > 0:
+        category = request.GET.get("category", categories[0])
+    else:
+        category = request.GET.get("category", "Не выбрано")
+
     category_info = store_services_presenter.get_category_info(category)
 
     selected_ordering = request.GET.get("ordering", "-id")

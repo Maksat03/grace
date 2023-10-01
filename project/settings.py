@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-uo0#^+b8nm-!mc!ta9jwa5na733g(vt4u3s(r^-j81yq3g7*n$'
 
 
-DEBUG = True
+DEBUG = False
 
 
 if DEBUG:
@@ -25,7 +25,7 @@ else:
     TIME_DIFFERENCE_BETWEEN_SERVER = 6
 
 
-ALLOWED_HOSTS = ["localhost", "grace.com.kz"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "grace.com.kz"]
 WSGI_APPLICATION = 'project.wsgi.application'
 ROOT_URLCONF = 'project.urls'
 
