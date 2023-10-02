@@ -90,6 +90,7 @@
 .main_page_info .info .statistics div p {
     margin: 0px 0px auto 0px;
     font-size: 20px;
+    text-align: center;
 }
 
 .main_page_info .banner {
@@ -120,7 +121,8 @@
 }
 
 .main_page_info .banner .choices_us img {
-    margin-top: 10px;
+    margin-top: 13px;
+    width: 70%;
 }
 
 .main_page_info .banner .choices_us {
