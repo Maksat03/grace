@@ -160,5 +160,6 @@
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-    min-height: 25px;
+    min-height: fit-content;
+    margin-bottom: 5px;
 }

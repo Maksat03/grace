@@ -1,6 +1,8 @@
 <div class="services_list">
     {% for service in services %}
-    <a href="/services/?id={{ service.id }}" class="service_card{% if forloop.counter|divisibleby:4 %} special_service_card{% endif %}{% if forloop.counter|divisibleby:5 %} special_service_card very_special_service_card{% endif %}{% if forloop.last and not forloop.counter|divisibleby:3 and not forloop.counter|divisibleby:5 and forloop.counter|divisibleby:4 %} one_row_service_card{% endif %}">
+    <a href="/services/?id={{ service.id }}" class="service_card
+    {% if forloop.counter|add:1|divisibleby:5 and forloop.counter > 3 %} special_service_card{% endif %}
+    {% if forloop.counter|divisibleby:5 and forloop.counter > 3 %} special_service_card very_special_service_card{% endif %}">
         <div class="service_img" style="background-image: url({{ service.poster }});"></div>
         <div class="text">
             <div class="pre_service_name_block">
@@ -11,19 +13,5 @@
             {% endif %}
         </div>
     </a>
-
-    {% if forloop.last and not forloop.counter|divisibleby:4 and not forloop.counter|divisibleby:5 and forloop.counter|divisibleby:2 %}
-        <a style="visibility: hidden" class="service_card">
-            <div class="service_img" style="background-image: url({{ service.poster }});"></div>
-            <div class="text">
-                <div class="pre_service_name_block">
-                    <h3>{{ service.name }}</h3>
-                </div>
-                {% if service.sub_services_count > 0 %}
-                <p>{{ service.sub_services_count }} вида</p>
-                {% endif %}
-            </div>
-        </a>
-    {% endif %}
     {% endfor %}
 </div>

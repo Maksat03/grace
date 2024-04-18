@@ -154,7 +154,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
-    justify-content: space-between;
 }
 
 .services_info .services_list .service_card {
@@ -173,7 +172,7 @@
 
 
 .services_info .services_list .service_card.special_service_card {
-    width: 530px;
+    width: 537px;
     margin-bottom: 10px;
 }
 
@@ -194,7 +193,6 @@
 
 .services_info .services_list .service_card .text h3, .services_info .services_list .service_card .text p {
     margin: 0;
-    margin-bottom: 3px;
     font-family: Gilroy-Regular;
     font-size: 21px;
 }
