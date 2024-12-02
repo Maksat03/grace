@@ -20,12 +20,12 @@ if DEBUG:
         'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG,
     }
 else:
-    DOMAIN = "grace.com.kz"
+    DOMAIN = "grace-com.kz"
     BOT_TOKEN = '6698535460:AAECdvYZGj_di-IXUtl9Fll0rE1l_WAZlE8'
     TIME_DIFFERENCE_BETWEEN_SERVER = 6
 
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "grace.com.kz"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "grace-com.kz"]
 WSGI_APPLICATION = 'project.wsgi.application'
 ROOT_URLCONF = 'project.urls'
 
